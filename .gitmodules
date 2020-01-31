@@ -1,0 +1,3 @@
+[submodule "JsonTools"]
+	path = JsonTools
+	url = https://github.com/sysrpl/JsonTools.git

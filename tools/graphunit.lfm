@@ -1,0 +1,26 @@
+object Form1: TForm1
+  Left = 0
+  Height = 600
+  Top = 0
+  Width = 800
+  AllowDropFiles = True
+  Caption = 'Form1'
+  ClientHeight = 600
+  ClientWidth = 800
+  OnDropFiles = FormDropFiles
+  LCLVersion = '1.6.4.0'
+  Visible = False
+  object LvlGraphControl1: TLvlGraphControl
+    Left = 0
+    Height = 600
+    Top = 0
+    Width = 800
+    Align = alClient
+    NodeStyle.DefaultImageIndex = -1
+    NodeStyle.Coloring = lgncRGB
+    ParentColor = True
+    ParentShowHint = False
+    TabOrder = 0
+    TabStop = False
+  end
+end

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="makeconfig.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="24" Y="11"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolsconfig.pas"/>
+        <UnitName Value="CodeToolsConfig"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="117"/>
+        <CursorPos X="43" Y="141"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/definetemplates.pas"/>
+        <UnitName Value="DefineTemplates"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="1001"/>
+        <CursorPos X="3" Y="1015"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/lazutils/laz_avl_tree.pp"/>
+        <UnitName Value="Laz_AVL_Tree"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="195"/>
+        <CursorPos X="39" Y="157"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <ComponentName Value="MyPkgCheetahEditor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uLazMakeCTConfig"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="5"/>
+        <CursorPos X="68" Y="23"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/ideintf/menuintf.pas"/>
+        <UnitName Value="MenuIntf"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="417"/>
+        <CursorPos X="10" Y="441"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/ideintf/idecommands.pas"/>
+        <UnitName Value="IDECommands"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="811"/>
+        <CursorPos X="10" Y="835"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/ideintf/idewindowintf.pas"/>
+        <UnitName Value="IDEWindowIntf"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="472"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <UnitName Value="CodeToolManager"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="209"/>
+        <CursorPos X="5" Y="220"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="27">
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/definetemplates.pas"/>
+        <Caret Line="870" Column="17" TopLine="849"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="10" Column="52"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="57" TopLine="12"/>
+      </Position>
+      <Position>
+        <Filename Value="makeconfig.lpr"/>
+        <Caret Line="11" Column="24"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="19" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="56" Column="44" TopLine="12"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="52" Column="36" TopLine="12"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="46" Column="36" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="22" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="45" Column="33"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="23" Column="23" TopLine="5"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1117" Column="39" TopLine="1078"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1137" Column="58" TopLine="1098"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1138" Column="54" TopLine="1099"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1139" Column="58" TopLine="1100"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1140" Column="55" TopLine="1101"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1143" Column="50" TopLine="1104"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1144" Column="50" TopLine="1105"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1145" Column="44" TopLine="1106"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1149" Column="56" TopLine="1110"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1150" Column="68" TopLine="1111"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1161" Column="9" TopLine="1123"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1162" Column="9" TopLine="1124"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1174" Column="57" TopLine="1136"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="1193" Column="49" TopLine="1154"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="231" Column="26" TopLine="209"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
+        <Caret Line="220" Column="5" TopLine="209"/>
+      </Position>
+      <Position>
+        <Filename Value="../lazmakeconfig/ulazmakectconfig.pas"/>
+        <Caret Line="23" Column="68" TopLine="5"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

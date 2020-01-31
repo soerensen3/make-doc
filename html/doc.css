@@ -1,0 +1,36 @@
+.dark-primary-color    { background: #303F9F; }
+.default-primary-color { background: #3F51B5; }
+.light-primary-color   { background: #C5CAE9; }
+.text-primary-color    { color: #FFFFFF; }
+.accent-color          { background: #4CAF50; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #757575; }
+.divider-color         { border-color: #BDBDBD; }
+
+h1 {
+  background: #4CAF50;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.1);  
+}
+
+h2 {
+  background: #303F9F;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.1);    
+}
+
+ul {
+  background: 
+}
+
+body {
+  background-color: #3F51B5;
+  color: #FFFFFF;
+  font-family: Roboto;
+}
+table {
+  width: 100%;
+  background-color: #FFFFFF;
+  color: #000000;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.1);
+  border-bottom: 6px solid;
+  border-color: #BDBDBD;  
+}

@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unit name="p3ddata">
+  <interface>
+    <uses>
+      <file name="Classes"/>
+      <file name="SysUtils"/>
+      <file name="DOM"/>
+      <file name="jsonparser"/>
+      <file name="fpjson"/>
+      <file name="typinfo"/>
+      <file name="p3dMath"/>
+      <file name="p3dutils"/>
+    </uses>
+    <interface>
+      <const name="P3DERROR_JSON_WRONG_TYPE" type="const" definition="'Failed to load property from JSON Data: Data is of the wrong type. Expected: &quot;%s&quot; Found: &quot;%s&quot;'"/>
+      <const name="P3DERROR_JSON_PROP_LOADER_NOT_IMPLEMENTED" type="const" definition="'A loader for this property type &quot;%s&quot; was not yet implemented'"/>
+      <const name="P3DERROR_JSON_CLASS_TYPE_NOT_FOUND" type="const" definition="'Failed to load object from JSON Data: The specified class type &quot;%s&quot; is not registered!'"/>
+    </interface>
+    <interface>
+      <type name="TP3DPropertyAccessStoreMode" type="type" definition="(smDoNotStore,smAttribute,smNode,smExternalBinary)"/>
+      <type name="IP3DPropertyAccess" type="type" definition="interface['{05DADF8D-8437-49E9-8287-2620D1E71948}']function GetContext:TInterfacedPersistent;function GetStoreMode:TP3DPropertyAccessStoreMode;procedure SetContext(AValue:TInterfacedPersistent);procedure SetStoreMode(AValue:TP3DPropertyAccessStoreMode);function GetAsString:String;procedure SetAsString(AValue:String);function GetCategory:String;function GetName:String;procedure SetCategory(AValue:String);procedure SetName(AValue:String);function GetNames:TStringList;property Name:String read GetName write SetName;property Category:String read GetCategory write SetCategory;property AsString:String read GetAsString write SetAsString;property StoreMode:TP3DPropertyAccessStoreMode read GetStoreMode write SetStoreMode;property Context:TInterfacedPersistent read GetContext write SetContext;end;"/>
+      <class name="TP3DPropertyAccess" type="class" parent="TInterfacedPersistent,IP3DPropertyAccess" definition="TP3DPropertyAccess = class ( TInterfacedPersistent,IP3DPropertyAccess );">
+        <section visibility="protected">
+          <variable name="FContext" type="variable" definition="TInterfacedPersistent"/>
+          <variable name="FStoreMode" type="variable" definition="TP3DPropertyAccessStoreMode"/>
+          <variable name="FCategory" type="variable" definition="String"/>
+          <variable name="FName" type="variable" definition="String"/>
+          <procedure name="GetArrayCount" type="function" definition="function GetArrayCount: Integer;"/>
+          <procedure name="SetArrayCount" type="procedure" definition="procedure SetArrayCount(AValue: Integer);"/>
+          <procedure name="GetArrayAsProp" type="function" definition="function GetArrayAsProp( ArrayIndex: Integer ): TP3DPropertyAccess;"/>
+          <procedure name="GetArrayAsString" type="function" definition="function GetArrayAsString( ArrayIndex: Integer ): String;"/>
+          <procedure name="GetIsArray" type="class" definition="class function GetIsArray: Boolean;"/>
+          <procedure name="SetArrayAsString" type="procedure" definition="procedure SetArrayAsString( ArrayIndex: Integer ; AValue: String);"/>
+          <procedure name="GetContext" type="function" definition="function GetContext: TInterfacedPersistent;"/>
+          <procedure name="GetStoreMode" type="function" definition="function GetStoreMode: TP3DPropertyAccessStoreMode;"/>
+          <procedure name="SetContext" type="procedure" definition="procedure SetContext(AValue: TInterfacedPersistent);"/>
+          <procedure name="SetStoreMode" type="procedure" definition="procedure SetStoreMode(AValue: TP3DPropertyAccessStoreMode);"/>
+          <procedure name="GetAsString" type="function" definition="function GetAsString: String;"/>
+          <procedure name="SetAsString" type="procedure" definition="procedure SetAsString(AValue: String);"/>
+          <procedure name="GetCategory" type="function" definition="function GetCategory: String;"/>
+          <procedure name="GetName" type="function" definition="function GetName: String;"/>
+          <procedure name="SetCategory" type="procedure" definition="procedure SetCategory(AValue: String);"/>
+          <procedure name="SetName" type="procedure" definition="procedure SetName(AValue: String);"/>
+          <procedure name="GetArrayIdxByString" type="function" definition="function GetArrayIdxByString( StringIndex: String ): Integer;"/>
+        </section>
+        <section visibility="public">
+          <procedure name="GetChildPropByPath" type="function" definition="function GetChildPropByPath( APath: String ): TP3DPropertyAccess;"/>
+          <procedure name="Create" type="constructor" definition="constructor Create( AName: String; const AStoreMode: TP3DPropertyAccessStoreMode = smDoNotStore );"/>
+          <procedure name="GetNames" type="function" definition="function GetNames: TStringList;"/>
+          <procedure name="SaveToDOM" type="function" definition="function SaveToDOM( AParentNode: TDOMElement ): Boolean;"/>
+          <procedure name="LoadFromDOM" type="procedure" definition="procedure LoadFromDOM( AParentNode: TDOMElement );"/>
+          <procedure name="LoadFromJSONData" type="procedure" definition="procedure LoadFromJSONData( AData: TJSONData );"/>
+          <property name="ArrayAsProp" type="property" definition="ArrayAsProp"/>
+          <property name="ArrayAsString" type="property" definition="ArrayAsString"/>
+          <property name="ArrayCount" type="property" definition="ArrayCount"/>
+          <property name="IsArray" type="property" definition="IsArray"/>
+        </section>
+        <section visibility="published">
+          <property name="Name" type="property" definition="Name"/>
+          <property name="Category" type="property" definition="Category"/>
+          <property name="AsString" type="property" definition="AsString"/>
+          <property name="StoreMode" type="property" definition="StoreMode"/>
+          <property name="Context" type="property" definition="Context"/>
+        </section>
+      </class>
+      <class name="TP3DPropertyAccessList" type="class" parent="specialize gP3DCustomObjectList&lt;TP3DPropertyAccess&gt;" definition="TP3DPropertyAccessList = class ( specialize gP3DCustomObjectList&lt;TP3DPropertyAccess&gt; );">
+        <section visibility="private">
+          <variable name="FContext" type="variable" definition="TInterfacedPersistent"/>
+        </section>
+        <section visibility="published">
+          <procedure name="Add" type="function" definition="function Add( Item: TCustomItem ): Integer;"/>
+          <procedure name="Add" type="function" definition="function Add( Item: TCustomItem; Category: String ): Integer;"/>
+          <procedure name="Add" type="function" definition="function Add( AItems: array of TCustomItem; const Category: String = '' ): Integer;"/>
+          <procedure name="FindByName" type="function" definition="function FindByName( AName: String ): Integer;"/>
+          <procedure name="GetPropByName" type="function" definition="function GetPropByName( AName: String ): TP3DPropertyAccess;"/>
+          <procedure name="GetPropByPath" type="function" definition="function GetPropByPath( APropPath: String ): TP3DPropertyAccess;"/>
+          <procedure name="LoadFromJSONData" type="procedure" definition="procedure LoadFromJSONData( AData: TJSONData );"/>
+          <procedure name="ToStr" type="function" definition="function ToStr: String;"/>
+          <procedure name="Sort" type="procedure" definition="procedure Sort;"/>
+          <procedure name="Create" type="constructor" definition="constructor Create( AContext: TInterfacedPersistent );"/>
+          <property name="Context" type="property" definition="Context"/>
+        </section>
+      </class>
+      <type name="TCardinalSet" type="type" definition="set of 0..SizeOf(Cardinal)*8-1;"/>
+      <class name="TP3DPropertyAccessRTTI" type="class" parent="TP3DPropertyAccess" definition="TP3DPropertyAccessRTTI = class ( TP3DPropertyAccess );">
+        <section visibility="private">
+          <variable name="FOwner" type="variable" definition="TObject"/>
+          <variable name="FPropInfo" type="variable" definition="PPropInfo"/>
+          <variable name="FTypeName" type="variable" definition="String"/>
+          <procedure name="GetIntValue" type="function" definition="function GetIntValue: string;"/>
+          <procedure name="GetCharValue" type="function" definition="function GetCharValue: string;"/>
+          <procedure name="GetEnumValue" type="function" definition="function GetEnumValue: string;"/>
+          <procedure name="GetFloatValue" type="function" definition="function GetFloatValue: string;"/>
+          <procedure name="GetStringValue" type="function" definition="function GetStringValue: string;"/>
+          <procedure name="GetSetValue" type="function" definition="function GetSetValue: string;"/>
+          <procedure name="GetClassValue" type="function" definition="function GetClassValue: string;"/>
+          <procedure name="GetStringsValue" type="function" definition="function GetStringsValue: string;"/>
+          <procedure name="GetLStringValue" type="function" definition="function GetLStringValue: string;"/>
+          <procedure name="GetWCharValue" type="function" definition="function GetWCharValue: string;"/>
+          <procedure name="GetVariantValue" type="function" definition="function GetVariantValue: string;"/>
+          <procedure name="SetIntValue" type="procedure" definition="procedure SetIntValue( AValue: String );"/>
+          <procedure name="SetCharValue" type="procedure" definition="procedure SetCharValue( AValue: String );"/>
+          <procedure name="SetEnumValue" type="procedure" definition="procedure SetEnumValue( AValue: String );"/>
+          <procedure name="SetFloatValue" type="procedure" definition="procedure SetFloatValue( AValue: String );"/>
+          <procedure name="SetStringValue" type="procedure" definition="procedure SetStringValue( AValue: String );"/>
+          <procedure name="SetSetValue" type="procedure" definition="procedure SetSetValue( AValue: String );"/>
+          <procedure name="SetClassValue" type="procedure" definition="procedure SetClassValue( AValue: String );"/>
+          <procedure name="SetStringsValue" type="procedure" definition="procedure SetStringsValue( AValue: String );"/>
+          <procedure name="SetLStringValue" type="procedure" definition="procedure SetLStringValue( AValue: String );"/>
+          <procedure name="SetWCharValue" type="procedure" definition="procedure SetWCharValue( AValue: String );"/>
+          <procedure name="SetVariantValue" type="procedure" definition="procedure SetVariantValue( AValue: String );"/>
+        </section>
+        <section visibility="public">
+          <property name="PropInfo" type="property" definition="PropInfo"/>
+          <procedure name="GetNames" type="function" definition="function GetNames: TStringList;"/>
+        </section>
+        <section visibility="published">
+          <procedure name="GetAsString" type="function" definition="function GetAsString: String;"/>
+          <procedure name="SetAsString" type="procedure" definition="procedure SetAsString( AValue: String );"/>
+          <procedure name="Create" type="constructor" definition="constructor Create( AOwner: TObject; AName: String; const AStoreMode: TP3DPropertyAccessStoreMode = smDoNotStore );"/>
+          <property name="TypeName" type="property" definition="TypeName"/>
+          <property name="Owner" type="property" definition="Owner"/>
+        </section>
+      </class>
+      <class name="TP3DPropertyAccessInt" type="class" parent="specialize gP3DPropertyAccess&lt;Integer&gt;" definition="TP3DPropertyAccessInt = class ( specialize gP3DPropertyAccess&lt;Integer&gt; );">
+        <section visibility="published">
+          <procedure name="GetAsString" type="function" definition="function GetAsString: String;"/>
+          <procedure name="SetAsString" type="procedure" definition="procedure SetAsString(AValue: String);"/>
+          <procedure name="GetDefaultValue" type="function" definition="function GetDefaultValue: Integer;"/>
+        </section>
+      </class>
+      <class name="TP3DPropertyAccessFloat" type="class" parent="specialize gP3DPropertyAccess&lt;Float&gt;" definition="TP3DPropertyAccessFloat = class ( specialize gP3DPropertyAccess&lt;Float&gt; );">
+        <section visibility="published">
+          <procedure name="GetAsString" type="function" definition="function GetAsString: String;"/>
+          <procedure name="SetAsString" type="procedure" definition="procedure SetAsString(AValue: String);"/>
+          <procedure name="GetDefaultValue" type="function" definition="function GetDefaultValue: Float;"/>
+        </section>
+      </class>
+      <class name="TP3DPropertyAccessString" type="class" parent="specialize gP3DPropertyAccess&lt;String&gt;" definition="TP3DPropertyAccessString = class ( specialize gP3DPropertyAccess&lt;String&gt; );">
+        <section visibility="published">
+          <procedure name="GetAsString" type="function" definition="function GetAsString: String;"/>
+          <procedure name="SetAsString" type="procedure" definition="procedure SetAsString(AValue: String);"/>
+          <procedure name="GetDefaultValue" type="function" definition="function GetDefaultValue: String;"/>
+          <procedure name="GetIsArray" type="class" definition="class function GetIsArray: Boolean;"/>
+        </section>
+      </class>
+      <type name="TP3DPropertyAccessVec2" type="type" definition="specialize gP3DPropertyAccessVec&lt;TVec2&gt;"/>
+      <type name="TP3DPropertyAccessVec3" type="type" definition="specialize gP3DPropertyAccessVec&lt;TVec3&gt;"/>
+      <type name="TP3DPropertyAccessVec4" type="type" definition="specialize gP3DPropertyAccessVec&lt;TVec4&gt;"/>
+      <type name="TP3DPropertyAccessQuat" type="type" definition="specialize gP3DPropertyAccessVec&lt;TQuaternion&gt;"/>
+      <type name="TP3DPropertyAccessVec2List" type="type" definition="specialize gP3DListPropertyAccess&lt;TVec2List,TVec2,TP3DPropertyAccessVec2&gt;"/>
+      <type name="TP3DPropertyAccessVec3List" type="type" definition="specialize gP3DListPropertyAccess&lt;TVec3List,TVec3,TP3DPropertyAccessVec3&gt;"/>
+      <type name="TP3DPropertyAccessVec4List" type="type" definition="specialize gP3DListPropertyAccess&lt;TVec4List,TVec4,TP3DPropertyAccessVec4&gt;"/>
+      <type name="TP3DPropertyAccessQuatList" type="type" definition="specialize gP3DListPropertyAccess&lt;TQuaternionList,TQuaternion,TP3DPropertyAccessQuat&gt;"/>
+    </interface>
+    <interface>
+      <class name="TP3DInterfacedPersistent" type="class" parent="TInterfacedPersistent" definition="TP3DInterfacedPersistent = class ( TInterfacedPersistent );">
+        <section visibility="private">
+          <variable name="FProperties" type="variable" definition="TP3DPropertyAccessList"/>
+          <procedure name="GetProperties" type="function" definition="function GetProperties: TP3DPropertyAccessList;"/>
+        </section>
+        <section visibility="public">
+          <procedure name="Create" type="constructor" definition="constructor Create;"/>
+          <procedure name="Destroy" type="destructor" definition="destructor Destroy;"/>
+          <procedure name="SaveToDOM" type="function" definition="function SaveToDOM( AParent: TDOMElement ): TDOMElement;"/>
+          <procedure name="LoadFromDOMNew" type="procedure" definition="procedure LoadFromDOMNew( ADOMNode: TDOMElement );"/>
+          <procedure name="LoadFromJSONData" type="procedure" definition="procedure LoadFromJSONData( AData: TJSONData );"/>
+          <procedure name="DOMNodeName" type="class" definition="class function DOMNodeName: String;"/>
+          <property name="Properties" type="property" definition="Properties"/>
+        </section>
+      </class>
+      <type name="TP3DInterfacedPersistentType" type="type" definition="class of TP3DInterfacedPersistent;"/>
+      <type name="IP3DPropertyAccessInterfacedPersistent" type="type" definition="interface['{CCCF4A09-B5A9-4EF6-AC58-D9C453D6055B}']function GetProperties:TP3DPropertyAccessList;function GetObjectValue:TP3DInterfacedPersistent;property Properties:TP3DPropertyAccessList read GetProperties;end;"/>
+      <type name="TP3DInterfacedPersistentList" type="type" definition="specialize gP3DInterfacedPersistentList&lt;TP3DInterfacedPersistent&gt;"/>
+      <type name="TP3DPropertyAccessInterfacedPersistent" type="type" definition="specialize gP3DPropertyAccessInterfacedPersistent&lt;TP3DInterfacedPersistent&gt;"/>
+      <type name="TP3DPropertyAccessInterfacedPersistentList" type="type" definition="specialize gP3DListPropertyAccessObject&lt;TP3DInterfacedPersistentList,TP3DInterfacedPersistent,TP3DPropertyAccessInterfacedPersistent&gt;"/>
+    </interface>
+    <interface>
+      <type name="TP3DCustomObjectList" type="type" definition="specialize gP3DCustomObjectList&lt;TP3DObject&gt;"/>
+      <class name="TP3DObjectList" type="class" parent="TP3DCustomObjectList" definition="TP3DObjectList = class ( TP3DCustomObjectList );">
+        <section visibility="private">
+          <variable name="FLastUpdate" type="variable" definition="Integer"/>
+          <variable name="FOwner" type="variable" definition="TPersistent"/>
+          <procedure name="DoChange" type="procedure" definition="procedure DoChange;"/>
+        </section>
+        <section visibility="public">
+          <procedure name="Create" type="constructor" definition="constructor Create( AOwner: TPersistent );"/>
+          <procedure name="FindUniqueName" type="function" definition="function FindUniqueName( BaseStr: String ): String;"/>
+          <procedure name="FindByName" type="function" definition="function FindByName( AName: String ): Integer;"/>
+          <procedure name="Clear" type="procedure" definition="procedure Clear(const FreeObjects: Boolean = True );"/>
+          <procedure name="DumpObjectList" type="function" definition="function DumpObjectList: String;"/>
+        </section>
+        <section visibility="published">
+          <property name="Owner" type="property" definition="Owner"/>
+          <property name="LastUpdate" type="property" definition="LastUpdate"/>
+        </section>
+      </class>
+      <type name="IP3DObject" type="type" definition="interface['{713A3737-F83B-4AE6-8C04-E3A88FE26FC5}']function GetName:TComponentName;procedure SetName(NewName:TComponentName);property Name:TComponentName read GetName write SetName;end;"/>
+      <class name="TP3DObject" type="class" parent="TP3DInterfacedPersistent,IP3DObject" definition="TP3DObject = class ( TP3DInterfacedPersistent,IP3DObject );">
+        <section visibility="private">
+          <variable name="FName" type="variable" definition="TComponentName"/>
+          <variable name="FParentList" type="variable" definition="TP3DObjectList"/>
+          <procedure name="GetName" type="function" definition="function GetName: TComponentName;"/>
+          <procedure name="SetName" type="procedure" definition="procedure SetName( NewName: TComponentName );"/>
+        </section>
+        <section visibility="public">
+          <procedure name="Create" type="constructor" definition="constructor Create( const AParentList: TP3DObjectList = nil );"/>
+          <procedure name="Destroy" type="destructor" definition="destructor Destroy;"/>
+          <property name="ParentList" type="property" definition="ParentList"/>
+        </section>
+        <section visibility="published">
+          <property name="Name" type="property" definition="Name"/>
+        </section>
+      </class>
+    </interface>
+    <interface>
+      <class name="TP3DDataBlock" type="class" parent="TP3DObject" definition="TP3DDataBlock = class ( TP3DObject );">
+        <section visibility="private">
+          <variable name="FAABB" type="variable" definition="TP3DAABB"/>
+          <variable name="FAction" type="variable" definition="TP3DAction"/>
+          <variable name="FOwner" type="variable" definition="TP3DLibrary"/>
+          <variable name="FSphere" type="variable" definition="TP3DSphere"/>
+          <variable name="FUsers" type="variable" definition="TP3DDataBlockList"/>
+          <procedure name="GetDOMPath" type="function" definition="function GetDOMPath: String;"/>
+          <procedure name="SetAction" type="procedure" definition="procedure SetAction(AValue: TP3DAction);"/>
+          <procedure name="SetName" type="procedure" definition="procedure SetName(NewName: TComponentName);"/>
+        </section>
+        <section visibility="public">
+          <procedure name="Create" type="constructor" definition="constructor Create( const AData: TP3DLibrary = nil );"/>
+          <procedure name="CreateFromDOM" type="constructor" definition="constructor CreateFromDOM( ADOMNode: TDOMElement; const AData: TP3DLibrary = nil );"/>
+          <procedure name="Destroy" type="destructor" definition="destructor Destroy;"/>
+          <procedure name="FastDestroy" type="procedure" definition="procedure FastDestroy;"/>
+          <procedure name="Render" type="procedure" definition="procedure Render( world: TMat4; Scene: TP3DScene; RenderObject: TP3DActor );"/>
+          <procedure name="LoadFromDOM" type="procedure" definition="procedure LoadFromDOM( ADOMNode: TDOMElement );"/>
+          <procedure name="LoadFromFile" type="procedure" definition="procedure LoadFromFile( FileName: String );"/>
+          <procedure name="LoadFromBinary" type="procedure" definition="procedure LoadFromBinary( FileName: String );"/>
+          <procedure name="Reload" type="procedure" definition="procedure Reload;"/>
+          <procedure name="CalcAABB" type="function" definition="function CalcAABB: TP3DAABB;"/>
+          <procedure name="CalcSphere" type="function" definition="function CalcSphere: TP3DSphere;"/>
+          <procedure name="RemoveFromFields" type="procedure" definition="procedure RemoveFromFields( Block: TP3DDataBlock );"/>
+          <procedure name="CastRay" type="function" definition="function CastRay( Orig, Dir: TVec3; Actor: TP3DActor; out HitPos: TVec3 ): Boolean;"/>
+          <procedure name="RemoveUser" type="procedure" definition="procedure RemoveUser( User: TP3DDataBlock );"/>
+          <procedure name="AddUser" type="procedure" definition="procedure AddUser( User: TP3DDataBlock );"/>
+          <procedure name="ClearFields" type="procedure" definition="procedure ClearFields;"/>
+          <procedure name="ClearUsers" type="procedure" definition="procedure ClearUsers;"/>
+          <procedure name="DOMNodeName" type="class" definition="class function DOMNodeName: String;"/>
+          <procedure name="AddToRenderList" type="procedure" definition="procedure AddToRenderList( ARootScene: TP3DScene; AWorld: TMat4; AList: TP3DRenderList; AFlags: TP3DRenderListFlags );"/>
+          <procedure name="CollideSphere" type="function" definition="function CollideSphere( Mat: TMat4; ASphere: TP3DSphere; out Intersect: TVec3; out N: TVec3 ): Boolean;"/>
+          <procedure name="CollideAABB" type="function" definition="function CollideAABB( Mat: TMat4; AAABB: TP3DAABB; out Intersect: TVec3; out N: TVec3 ): Boolean;"/>
+          <procedure name="CollidePoint" type="function" definition="function CollidePoint( Mat: TMat4; APoint: TVec3 ): Boolean;"/>
+          <property name="AABB" type="property" definition="AABB"/>
+          <property name="Sphere" type="property" definition="Sphere"/>
+          <property name="Owner" type="property" definition="Owner"/>
+          <property name="Action" type="property" definition="Action"/>
+        </section>
+        <section visibility="published">
+          <property name="DOMPath" type="property" definition="DOMPath"/>
+          <property name="Users" type="property" definition="Users"/>
+        </section>
+      </class>
+      <type name="TP3DDataBlockType" type="type" definition="class of TP3DDataBlock;"/>
+      <type name="TP3DCustomListOnChangeAction" type="type" definition="(actAdd,actDelete,actClear)"/>
+      <type name="TP3DCustomDataBlockList" type="type" definition="specialize gP3DCustomDatablockList&lt;TP3DDataBlock&gt;"/>
+      <class name="TP3DDataBlockList" type="class" parent="TP3DCustomDataBlockList" definition="TP3DDataBlockList = class ( TP3DCustomDataBlockList );">
+        <section visibility="public">
+          <procedure name="DumpUsers" type="function" definition="function DumpUsers: String;"/>
+        </section>
+      </class>
+      <type name="TP3DPropertyAccessDataBlock" type="type" definition="specialize gP3DPropertyAccessDataBlock&lt;TP3DDataBlock&gt;"/>
+      <type name="TP3DPropertyAccessDataBlockList" type="type" definition="specialize gP3DListPropertyAccessObject&lt;TP3DDataBlockList,TP3DDataBlock,TP3DPropertyAccessDataBlock&gt;"/>
+    </interface>
+    <interface>
+      <class name="TP3DClassFactory" type="class" parent="specialize gP3DClassFactory&lt;TP3DInterfacedPersistentType&gt;" definition="TP3DClassFactory = class ( specialize gP3DClassFactory&lt;TP3DInterfacedPersistentType&gt; );">
+        <section visibility="published">
+          <procedure name="FindByDOMNodeName" type="function" definition="function FindByDOMNodeName( ADOMName: String ): TClassItem;"/>
+        </section>
+      </class>
+    </interface>
+    <interface>
+      <variable name="P3DClassFactory" type="variable" definition="nil"/>
+    </interface>
+    <interface>
+      <type name="TP3DFileWatchOnFileChanged" type="type" definition="procedure(Sender:TP3DFileWatch;out DoReload:Boolean)of object"/>
+      <type name="TP3DFileWatchOnFileNameChanged" type="type" definition="procedure(Sender:TP3DFileWatch;ANewValue:String)of object"/>
+      <class name="TP3DFileWatch" type="class" parent="TPersistent" definition="TP3DFileWatch = class ( TPersistent );">
+        <section visibility="private">
+          <variable name="FLastFileAge" type="variable" definition="LongInt"/>
+          <variable name="FFileName" type="variable" definition="String"/>
+          <variable name="FOnFileChange" type="variable" definition="TP3DFileWatchOnFileChanged"/>
+          <variable name="FOnFileNameChange" type="variable" definition="TP3DFileWatchOnFileNameChanged"/>
+          <variable name="FUserPointer" type="variable" definition="Pointer"/>
+          <procedure name="GetFileAge" type="function" definition="function GetFileAge: LongInt;"/>
+          <procedure name="SetFileName" type="procedure" definition="procedure SetFileName(AValue: String);"/>
+        </section>
+        <section visibility="public">
+          <procedure name="Create" type="constructor" definition="constructor Create( AFileName: String; AUserPointer: Pointer = nil );"/>
+          <procedure name="Destroy" type="destructor" definition="destructor Destroy;"/>
+          <procedure name="CheckForChange" type="function" definition="function CheckForChange: Boolean;"/>
+          <procedure name="Reload" type="procedure" definition="procedure Reload;"/>
+          <property name="UserPointer" type="property" definition="UserPointer"/>
+        </section>
+        <section visibility="published">
+          <property name="FileName" type="property" definition="FileName"/>
+          <property name="LastFileAge" type="property" definition="LastFileAge"/>
+          <property name="OnFileChange" type="property" definition="OnFileChange"/>
+          <property name="OnFileNameChange" type="property" definition="OnFileNameChange"/>
+        </section>
+      </class>
+      <class name="TP3DFileWatchList" type="class" parent="specialize gP3DCustomObjectList&lt;TP3DFileWatch&gt;" definition="TP3DFileWatchList = class ( specialize gP3DCustomObjectList&lt;TP3DFileWatch&gt; );">
+        <section visibility="published">
+          <procedure name="AddWatch" type="function" definition="function AddWatch( AFileName: String; AUserPointer: Pointer = nil ): Integer;"/>
+          <procedure name="CheckForChange" type="procedure" definition="procedure CheckForChange;"/>
+        </section>
+      </class>
+      <class name="TP3DSearchPathContainer" type="class" parent="TP3DInterfacedPersistent" definition="TP3DSearchPathContainer = class ( TP3DInterfacedPersistent );">
+        <section visibility="private">
+          <variable name="FBaseDir" type="variable" definition="String"/>
+          <variable name="FPaths" type="variable" definition="TStringList"/>
+          <procedure name="SetBaseDir" type="procedure" definition="procedure SetBaseDir(AValue: String);"/>
+          <procedure name="GetFullPath" type="function" definition="function GetFullPath( Index: Integer ): String;"/>
+        </section>
+        <section visibility="public">
+          <procedure name="Create" type="constructor" definition="constructor Create;"/>
+          <procedure name="Destroy" type="destructor" definition="destructor Destroy;"/>
+          <procedure name="FindFile" type="function" definition="function FindFile( FName: String ): String;"/>
+          <procedure name="FindFileEx" type="function" definition="function FindFileEx( FName: String; PreferedPath: String ): String;"/>
+          <procedure name="LoadFromDOMNew" type="procedure" definition="procedure LoadFromDOMNew(ADOMNode: TDOMElement);"/>
+          <procedure name="DOMNodeName" type="class" definition="class function DOMNodeName: String;"/>
+          <property name="FullPath" type="property" definition="FullPath"/>
+          <property name="Paths" type="property" definition="Paths"/>
+        </section>
+        <section visibility="published">
+          <property name="BaseDir" type="property" definition="BaseDir"/>
+        </section>
+      </class>
+      <class name="TP3DPropertyAccessFileWatch" type="class" parent="specialize gP3DPropertyAccess&lt;TP3DFileWatch&gt;" definition="TP3DPropertyAccessFileWatch = class ( specialize gP3DPropertyAccess&lt;TP3DFileWatch&gt; );">
+        <section visibility="private">
+          <variable name="FAbsolutePaths" type="variable" definition="Boolean"/>
+        </section>
+        <section visibility="published">
+          <procedure name="GetAsString" type="function" definition="function GetAsString: String;"/>
+          <procedure name="SetAsString" type="procedure" definition="procedure SetAsString(AValue: String);"/>
+          <property name="AbsolutePaths" type="property" definition="AbsolutePaths"/>
+          <procedure name="GetDefaultValue" type="function" definition="function GetDefaultValue: TP3DFileWatch;"/>
+        </section>
+      </class>
+    </interface>
+    <interface>
+      <variable name="P3DFileWatch" type="variable" definition="nil"/>
+      <variable name="P3DSearchPaths" type="variable" definition="nil"/>
+    </interface>
+    <interface>
+      <const name="P3DFileVerMaj" type="const" definition="0" description="Version 0.1@br "/>
+      <const name="P3DFileVerMin" type="const" definition="1"/>
+    </interface>
+    <interface>
+      <class name="TP3DLibrary" type="class" parent="TP3DInterfacedPersistent" definition="TP3DLibrary = class ( TP3DInterfacedPersistent );">
+        <section visibility="private">
+          <variable name="FFileWatch" type="variable" definition="TP3DFileWatch"/>
+          <variable name="FDOMFile" type="variable" definition="TXMLDocument"/>
+          <variable name="FIsDesignerPackage" type="variable" definition="Boolean"/>
+          <variable name="FBinFile" type="variable" definition="TFileStream"/>
+          <procedure name="GetBinFile" type="function" definition="function GetBinFile: TFileStream;"/>
+          <procedure name="GetDOMFile" type="function" definition="function GetDOMFile: TXMLDocument;"/>
+          <procedure name="GetName" type="function" definition="function GetName: String;"/>
+          <procedure name="PerformActions" type="procedure" definition="procedure PerformActions(GlobalTime: Float);"/>
+        </section>
+        <section visibility="protected">
+          <procedure name="OpenDOMFile" type="procedure" definition="procedure OpenDOMFile;"/>
+          <procedure name="CreateDOMFile" type="procedure" definition="procedure CreateDOMFile;"/>
+          <procedure name="CloseDOMFile" type="procedure" definition="procedure CloseDOMFile;"/>
+          <procedure name="SaveDOMFile" type="procedure" definition="procedure SaveDOMFile( const FName: String = '' );"/>
+          <procedure name="CreateBinFile" type="procedure" definition="procedure CreateBinFile( const AFileName: String = '' );"/>
+          <procedure name="CloseBinFile" type="procedure" definition="procedure CloseBinFile;"/>
+        </section>
+        <section visibility="public">
+          <procedure name="Create" type="constructor" definition="constructor Create;"/>
+          <procedure name="CreateFromDOM" type="constructor" definition="constructor CreateFromDOM( ADOMNode: TDOMElement );"/>
+          <procedure name="CreateFromFile" type="constructor" definition="constructor CreateFromFile( AFileName: String );"/>
+          <procedure name="Destroy" type="destructor" definition="destructor Destroy;"/>
+          <procedure name="FindDOMToPath" type="function" definition="function FindDOMToPath( DOMPath: String ): TDOMElement;"/>
+          <procedure name="GetOwnerFromPath" type="function" definition="function GetOwnerFromPath( DOMPath: TP3DXMLPath; const ForceLoad: Boolean = False ): TP3DLibrary;"/>
+          <procedure name="AppendFromDOM" type="function" definition="function AppendFromDOM( ADOMNode: TDOMElement; AParent: TP3DDataBlock ): Integer;"/>
+          <procedure name="AppendFromDOM" type="function" definition="function AppendFromDOM( ADOMNode: TDOMElement; AType: TP3DDataBlockType; const AParent: TP3DDataBlock = nil ): Integer;"/>
+          <procedure name="AppendFromDOM" type="function" definition="function AppendFromDOM( ADOMNode: TDOMElement ): Integer;"/>
+          <procedure name="AppendFromPath" type="function" definition="function AppendFromPath( APath: TP3DXMLPath ): Integer;"/>
+          <procedure name="AppendFromPath" type="function" definition="function AppendFromPath( APath: TP3DXMLPath; AParent: TP3DDataBlock ): Integer;"/>
+          <procedure name="AppendFromPath" type="function" definition="function AppendFromPath( APath: TP3DXMLPath; AType: TP3DDataBlockType; const AParent: TP3DDataBlock = nil ): Integer;"/>
+          <procedure name="AppendAllFromDom" type="function" definition="function AppendAllFromDom( ADOMNode: TDOMElement; AType: TP3DDataBlockType ): Integer;"/>
+          <procedure name="AppendFile" type="function" definition="function AppendFile( AFileName: String ): String;"/>
+          <procedure name="CreateNew" type="function" definition="function CreateNew( Tp: TP3DDataBlockType; const CreateObject: Boolean = True ): Integer;"/>
+          <procedure name="SaveToDOM" type="procedure" definition="procedure SaveToDOM( const ADOMNode: TDOMElement = nil );"/>
+          <procedure name="SaveToFile" type="procedure" definition="procedure SaveToFile( const AFileName: String = '' );"/>
+          <procedure name="SaveToFile" type="procedure" definition="procedure SaveToFile( AParentClass: TP3DDataBlockType; const AFileName: String = '' );"/>
+          <procedure name="RemoveFromFields" type="procedure" definition="procedure RemoveFromFields( Block: TP3DDataBlock );"/>
+          <procedure name="ClearFields" type="procedure" definition="procedure ClearFields;"/>
+          <procedure name="IsValid" type="function" definition="function IsValid( Obj: TP3DObject ): Boolean;"/>
+          <procedure name="CheckLastChange" type="function" definition="function CheckLastChange: Integer;"/>
+          <procedure name="DOMNodeName" type="class" definition="class function DOMNodeName: String;"/>
+          <property name="DataBlocks" type="property" definition="DataBlocks"/>
+        </section>
+        <section visibility="published">
+          <property name="FileWatch" type="property" definition="FileWatch"/>
+          <property name="DOMFile" type="property" definition="DOMFile"/>
+          <property name="BinFile" type="property" definition="BinFile"/>
+          <property name="IsDesignerPackage" type="property" definition="IsDesignerPackage"/>
+          <property name="Name" type="property" definition="Name"/>
+        </section>
+      </class>
+      <class name="TP3DData" type="class" parent="TP3DLibrary" definition="TP3DData = class ( TP3DLibrary );">
+        <section visibility="private">
+          <variable name="FLibraries" type="variable" definition="TP3DLibraryList"/>
+          <procedure name="GetName" type="function" definition="function GetName: String;"/>
+        </section>
+        <section visibility="public">
+          <procedure name="Create" type="constructor" definition="constructor Create;"/>
+          <procedure name="Destroy" type="destructor" definition="destructor Destroy;"/>
+          <procedure name="ClearFields" type="procedure" definition="procedure ClearFields;"/>
+          <procedure name="IsValid" type="function" definition="function IsValid(Obj: TP3DObject): Boolean;"/>
+          <procedure name="OpenLibrary" type="function" definition="function OpenLibrary( FileName: String ): Integer;"/>
+          <procedure name="CheckLastChange" type="function" definition="function CheckLastChange: Integer;"/>
+        </section>
+        <section visibility="published">
+          <property name="Libraries" type="property" definition="Libraries"/>
+        </section>
+      </class>
+      <class name="TP3DLibraryList" type="class" parent="specialize gP3DCustomObjectList&lt;TP3DLibrary&gt;" definition="TP3DLibraryList = class ( specialize gP3DCustomObjectList&lt;TP3DLibrary&gt; );">
+        <section visibility="private">
+          <variable name="FLastUpdate" type="variable" definition="Integer"/>
+          <procedure name="DoChange" type="procedure" definition="procedure DoChange;"/>
+        </section>
+        <section visibility="public">
+          <procedure name="FindByFileName" type="function" definition="function FindByFileName( AFileName: String ): Integer;"/>
+          <property name="LastUpdate" type="property" definition="LastUpdate"/>
+        </section>
+      </class>
+      <type name="TP3DPropertyAccessLibrary" type="type" definition="specialize gP3DPropertyAccessInterfacedPersistent&lt;TP3DLibrary&gt;"/>
+      <type name="TP3DPropertyAccessLibraryList" type="type" definition="specialize gP3DListPropertyAccessObject&lt;TP3DLibraryList,TP3DLibrary,TP3DPropertyAccessLibrary&gt;"/>
+      <class name="TP3DDataBlockCacheEntry" type="class" parent="TPersistent" definition="TP3DDataBlockCacheEntry = class ( TPersistent );">
+        <section visibility="private">
+          <variable name="FBlockType" type="variable" definition="TP3DDataBlockType"/>
+          <variable name="FDatablock" type="variable" definition="TP3DDataBlock"/>
+          <variable name="FName" type="variable" definition="String"/>
+          <variable name="FStackTrace" type="variable" definition="String"/>
+        </section>
+        <section visibility="published">
+          <property name="Name" type="property" definition="Name"/>
+          <property name="BlockType" type="property" definition="BlockType"/>
+          <property name="Datablock" type="property" definition="Datablock"/>
+          <property name="StackTrace" type="property" definition="StackTrace"/>
+        </section>
+      </class>
+      <type name="TP3DDatablockCacheEntryList" type="type" definition="specialize gP3DCustomObjectList&lt;TP3DDatablockCacheEntry&gt;"/>
+      <class name="TP3DDataBlockCache" type="class" parent="TP3DDatablockCacheEntryList" definition="TP3DDataBlockCache = class ( TP3DDatablockCacheEntryList );">
+        <section visibility="public">
+          <procedure name="FindBlock" type="function" definition="function FindBlock( Block: TP3DDataBlock ): Integer;"/>
+          <procedure name="Add" type="function" definition="function Add( Block: TP3DDataBlock ): Integer;"/>
+          <procedure name="Destroy" type="destructor" definition="destructor Destroy;"/>
+        </section>
+      </class>
+    </interface>
+    <procedure name="P3DDataInit" type="procedure" definition="procedure P3DDataInit;"/>
+    <procedure name="P3DDataFinish" type="procedure" definition="procedure P3DDataFinish;"/>
+  </interface>
+</unit>

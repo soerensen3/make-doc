@@ -1,0 +1,49 @@
+object Form1: TForm1
+  Left = 0
+  Height = 420
+  Top = 0
+  Width = 670
+  ActiveControl = PageControl1
+  AllowDropFiles = True
+  Caption = 'Form1'
+  ClientHeight = 420
+  ClientWidth = 670
+  OnCreate = FormCreate
+  OnDropFiles = FormDropFiles
+  OnKeyUp = FormKeyUp
+  LCLVersion = '1.6.4.0'
+  Visible = False
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 265
+    Top = 0
+    Width = 670
+    Align = alClient
+    TabOrder = 0
+  end
+  object ErrorList: TListView
+    Left = 0
+    Height = 150
+    Top = 270
+    Width = 670
+    Align = alBottom
+    Columns = <>
+    TabOrder = 1
+    OnDblClick = ErrorListDblClick
+    OnKeyUp = FormKeyUp
+  end
+  object Splitter1: TSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 5
+    Top = 265
+    Width = 670
+    Align = alBottom
+    ResizeAnchor = akBottom
+  end
+  object FindDialog1: TFindDialog
+    OnFind = FindDialog1Find
+    left = 505
+    top = 213
+  end
+end

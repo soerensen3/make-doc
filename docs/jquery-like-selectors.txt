@@ -1,0 +1,29 @@
+filename: *.unit.xml
+
+```
+# Reference for unit $(unit).name
+
+## Units used by $(unit).name
+$(uses>file)*.name
+
+## Types declared in $(unit).name
+
+$(unit>declaration)*.name
+```
+
+```{declaration[type=class]}*
+# Reference for unit $(unit).name>$(declaration[type=class]*
+
+```
+
+Selects element if it is currently focused.
+
+
+filename: *.package.xml
+
+# Reference for package $(package).name
+
+## Types declared in $(package).name
+
+$(unit)>declaration
+

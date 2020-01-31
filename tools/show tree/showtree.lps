@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="10"/>
+    <BuildModes Active="Default"/>
+    <Units Count="14">
+      <Unit0>
+        <Filename Value="showtree.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="21"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="showtreeunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="260"/>
+        <CursorPos X="126" Y="278"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="239"/>
+        <CursorPos Y="260"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/basiccodetools.pas"/>
+        <UnitName Value="BasicCodeTools"/>
+        <EditorIndex Value="7"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/codegraph.pas"/>
+        <UnitName Value="CodeGraph"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="629"/>
+        <CursorPos X="13" Y="630"/>
+        <UsageCount Value="10"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/codetree.pas"/>
+        <UnitName Value="CodeTree"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="774"/>
+        <CursorPos X="53" Y="778"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../../../../lazarus/components/codetools/examples/scanexamples/abstractclass1.pas"/>
+        <UnitName Value="AbstractClass1"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/pascalparsertool.pas"/>
+        <UnitName Value="PascalParserTool"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="73"/>
+        <CursorPos X="3" Y="86"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/pascalreadertool.pas"/>
+        <UnitName Value="PascalReaderTool"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="1453"/>
+        <CursorPos X="3" Y="1456"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/fileprocs.pas"/>
+        <UnitName Value="FileProcs"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="2225"/>
+        <CursorPos X="3" Y="2227"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="/usr/share/lazarus/1.6.4/components/lazutils/LazLoggerIntf.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="83"/>
+        <CursorPos X="10" Y="104"/>
+        <UsageCount Value="10"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="/usr/share/lazarus/1.6.4/components/lazutils/LazLoggerImpl.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="378"/>
+        <CursorPos X="17" Y="383"/>
+        <UsageCount Value="10"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="../show tree 2/showtreeunit.pas"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <CursorPos X="33" Y="308"/>
+        <UsageCount Value="10"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="/usr/share/lazarus/1.6.4/lcl/lcltype.pp"/>
+        <UnitName Value="LCLType"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="433"/>
+        <CursorPos X="3" Y="452"/>
+        <UsageCount Value="10"/>
+      </Unit13>
+    </Units>
+    <JumpHistory Count="26" HistoryIndex="25">
+      <Position1>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="657" Column="42" TopLine="642"/>
+      </Position1>
+      <Position2>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="61" Column="5" TopLine="45"/>
+      </Position2>
+      <Position3>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="542" Column="26" TopLine="517"/>
+      </Position3>
+      <Position4>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="84" Column="16" TopLine="63"/>
+      </Position4>
+      <Position5>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="85" Column="3" TopLine="63"/>
+      </Position5>
+      <Position6>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="18" Column="17"/>
+      </Position6>
+      <Position7>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="801" Column="31" TopLine="782"/>
+      </Position7>
+      <Position8>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="115" Column="3" TopLine="96"/>
+      </Position8>
+      <Position9>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="804" TopLine="794"/>
+      </Position9>
+      <Position10>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="806" Column="32" TopLine="795"/>
+      </Position10>
+      <Position11>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="807" Column="27" TopLine="792"/>
+      </Position11>
+      <Position12>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="129" Column="30" TopLine="116"/>
+      </Position12>
+      <Position13>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="136" Column="24" TopLine="131"/>
+      </Position13>
+      <Position14>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="184" TopLine="180"/>
+      </Position14>
+      <Position15>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="172" Column="54" TopLine="146"/>
+      </Position15>
+      <Position16>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="170" Column="16" TopLine="154"/>
+      </Position16>
+      <Position17>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="172" Column="34" TopLine="158"/>
+      </Position17>
+      <Position18>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="170" Column="66" TopLine="158"/>
+      </Position18>
+      <Position19>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="172" Column="55" TopLine="158"/>
+      </Position19>
+      <Position20>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="171" Column="73" TopLine="158"/>
+      </Position20>
+      <Position21>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="168" Column="7" TopLine="152"/>
+      </Position21>
+      <Position22>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="172" Column="77" TopLine="158"/>
+      </Position22>
+      <Position23>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="30" TopLine="14"/>
+      </Position23>
+      <Position24>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="32" Column="74" TopLine="15"/>
+      </Position24>
+      <Position25>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="240" Column="33" TopLine="215"/>
+      </Position25>
+      <Position26>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="539" TopLine="408"/>
+      </Position26>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

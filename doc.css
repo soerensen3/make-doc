@@ -1,0 +1,152 @@
+header, section, footer, aside, nav, main, article, figure {
+    display: block;
+} 
+
+header {  
+  font-family: Open Sans, Arial, sans-serif;   
+  font-size: 32px;
+  border-bottom: 4px solid sienna;
+  background-color: linen;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.1);
+}
+
+h1 {  
+  font-size: large;
+  font-weight: lighter;  
+  font-family: Open Sans, Arial, sans-serif;
+  background-color: khaki;
+  border-bottom: 2px solid darkkhaki;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-weight: bold;
+  color: sienna;
+}
+
+
+h2 {  
+  font-size: medium;
+  font-weight: bold;
+  color: maroon;
+  font-style: italic;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  border-color: #5E7B30;  
+  border-bottom-width: 2px;  
+  border-bottom-style: solid;  
+  display: inline-block;
+}
+h2::after { content:"\A"; white-space:pre; }
+
+
+a:visited{
+  color: #283810;
+  font-weight: normal;
+}
+
+a:link{
+  font-weight: bold;
+  color: #5E7B30;
+}
+a {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+description {  
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+strong, b {
+    font-weight: bold;
+}
+
+article {
+  background-color: aliceblue;
+  border-bottom: 5px solid slateblue;
+}
+
+code {  
+  white-space: pre-wrap;
+  font-family: "Source Code Pro",monospace;  
+}
+/*code:span {
+  white-space: pre;
+  font-family: "Source Code Pro",monospace;  
+}*/
+
+div {  
+  line-height: 150%;  
+  list-style-type: square;  
+  list-style-position: inside;
+}
+
+ul {  
+  list-style-type: none;  
+}
+
+.list {
+  font-family: Open Sans, Arial, sans-serif;
+  background-color: khaki;
+  border-bottom: 2px solid darkkhaki;
+}
+
+/*.list li {  
+  border-color: #D4E5BB;  
+  border-width: 1px;  
+  border-style: solid;  
+}
+
+.list td {  
+  border-bottom-color: #D4E5BB;  
+  border-bottom-width: 2px;  
+  border-bottom-style: solid;  
+}*/
+
+/*from lazdoc.css*/
+
+/* identifier in source fragments */
+span.identifier {
+
+}
+
+/* symbols in source fragments */
+span.symbol {
+  color: darkred
+}
+
+/* keywords in source fragments */
+span.keyword {
+  font-weight: bold
+}
+
+/* comments in source fragments */
+span.comment {
+  font-weight: lighter;  
+  font-style: italic;  
+  color: #3333ff;
+}
+
+/* directives in source fragments */
+span.directive {
+  color: darkyellow;
+  font-style: italic
+}
+
+/* numbers in source fragments */
+span.number {
+  color: darkmagenta
+}
+
+/* characters (#...) in source fragments */
+span.character {
+  color: darkcyan
+}
+
+/* strings in source fragments */
+span.string {
+  color: blue
+}
+
+/* assembler passages in source fragments */
+span.assembler {
+  color: green
+}
+

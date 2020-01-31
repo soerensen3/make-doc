@@ -1,0 +1,8 @@
+object MyPkgCheetahEditor: TMyPkgCheetahEditor
+  Left = 311
+  Height = 240
+  Top = 40
+  Width = 320
+  Caption = 'MyPkgCheetahEditor'
+  LCLVersion = '2.1.0.0'
+end
