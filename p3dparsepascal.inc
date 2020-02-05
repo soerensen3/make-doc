@@ -22,11 +22,7 @@
   function AssertSection( Parent: TNode; var Section: TNode; SectName: String; const TP: TJsonNodeKind = nkArray ): TNode;
   begin
     if ( not Assigned( Section )) then
-    {$IFDEF JSON}
       Section:= Parent.Add( SectName, TP );
-    {$ELSE}
-      Section:= CreateNode( Parent, SectName );
-    {$ENDIF}
     Result:= Section;
   end;
 
@@ -37,8 +33,8 @@
     CreateNode( Parent, 'Code', Tool.ExtractNode( Node, []));
     CreateNode( Parent, 'SourcePos', GetCodePos( Node ));
     comment:= GetPasDocCommentsAsHTML( Tool, Node );
-    //if ( comment > '' ) then
-    CreateNode( Parent, 'Comment', comment );
+    if ( comment > '' ) then
+      CreateNode( Parent, 'Comment', comment );
   end;
 
   // Loops through a Code Tree section's child nodes and calls ScanProc for each node.
@@ -62,11 +58,6 @@
     else
       NotSupported( Parent, Node );
   end;
-
-  {procedure ExtractCode( Parent: TNode; Node: TCodeTreeNode );
-  begin
-    CreateStringNode( Parent, Tool.ExtractNode( Node, []));
-  end;}
 
   function CreateTypeNode( Parent: TNode; TypeName: String; Context: TNode ): TNode;
     function WalkJSON( ThisParent: TNode ): String;
@@ -140,7 +131,6 @@
   procedure ParseParams( Parent: TNode; Node: TCodeTreeNode );
   begin
     Parent:= CreateNode( Parent, 'Params' );
-    //Child:= Node.FirstChild;
     LoopSimple( Parent, Node, @ParseVariable );
   end;
 
@@ -167,7 +157,6 @@
       end;
       if ( Assigned( Child ) and ( Child.Desc = ctnIdentifier )) then
         ExtractTypeReference( Parent, Tool.FindTypeNodeOfDefinition( Child ), Parent.Parent );
-        //CreateNode( Parent, 'Type', Tool.ExtractDefinitionName( Child ));
     end;
   end;
 {
@@ -192,8 +181,6 @@
       end;
   end;}
 
-//  procedure ParseNode( Parent: TNode; Node: TCodeTreeNode ); forward; deprecated;
-
   // Parse a variable' name and type
   function ExtractVar( Parent: TNode; Node: TCodeTreeNode ): TNode;
   begin
@@ -204,13 +191,8 @@
 
   // Parse a const's name and assigned value
   function ParseConst( Parent: TNode; Node: TCodeTreeNode ): TNode;
-  var
-    Tp: TCodeTreeNode;
   begin
     Result:= CreateNode( Parent, Tool.ExtractDefinitionName( Node ));
-    //Tp:= Tool.FindTypeNodeOfDefinition( Node );
-    //ParseTypeReference( Result, Tp );
-    //CreateNode( Parent, 'const', Tool.ExtractNode( Node.FirstChild, []));
     CreateNode( Result, 'Value', Tool.ReadStringConstantValue( Node.FirstChild.StartPos ));
     GetSourceParams( Result, Node );
   end;
@@ -227,55 +209,52 @@
     begin
       param:= CreateNode( Parent, 'Params' );
       S:= TStringList.Create;
-      while ( Tool.CurPos.Flag <> cafEdgedBracketClose ) do
-        begin
-          if ( Tool.CurPos.Flag = cafColon ) then // In Free Pascal it is allowed to separate multiple parameter names with a comma and define
-                                                  // the type after a colon. like: Param1, Param2, Param3: TType. Therefore the names are first
-                                                  // stored in an array and are only written when colon is reach where the type is specified.
-            begin
-              Tool.ReadNextAtom;
-              for item in S do begin
-                ParseTypeReference(
-                  CreateNode( param, item ), // Parent
-                    Tool.GetAtom );
-              end;
-              S.Clear;
-            end
-          else if ( Tool.CurPos.Flag = cafWord ) then
-            S.Add( Tool.GetAtom );
+      while ( Tool.CurPos.Flag <> cafEdgedBracketClose ) do begin
+        if ( Tool.CurPos.Flag = cafColon ) then begin // In Free Pascal it is allowed to separate multiple parameter names with a comma and define
+                                                      // the type after a colon. like: Param1, Param2, Param3: TType. Therefore the names are first
+                                                      // stored in an array and are only written when colon is reach where the type is specified.
+
           Tool.ReadNextAtom;
-        end;
+          for item in S do begin
+            ParseTypeReference(
+              CreateNode( param, item ), // Parent
+                Tool.GetAtom );
+          end;
+          S.Clear;
+        end else if ( Tool.CurPos.Flag = cafWord ) then
+          S.Add( Tool.GetAtom );
+        Tool.ReadNextAtom;
+      end;
       S.Free;
     end;
 
-    procedure ParsePropGetterSetter;  // property Name: TType index 0 read FName write FName;
+    // property Name: TType index 0 read FName write FName;
+    procedure ParsePropGetterSetter;
     begin
-      while ( Tool.CurPos.Flag <> cafSemicolon ) do  // parse until the semicolon is reached
-        begin
-          Tool.ReadNextAtom;
-          if ( Tool.UpAtomIs( 'READ' )) then
-            begin
-              Tool.ReadNextAtom;
-              CreateNode( Parent, 'read', Tool.GetAtom );
-            end
-          else if ( Tool.UpAtomIs( 'WRITE' )) then
-            begin
-              Tool.ReadNextAtom;
-              CreateNode( Parent, 'write', Tool.GetAtom );
-            end
-          else if ( Tool.UpAtomIs( 'INDEX' )) then
-            begin
-              Tool.ReadNextAtom;
-              CreateNode( Parent, 'index', Tool.GetAtom );
-            end;
-        end;
+      while ( Tool.CurPos.Flag <> cafSemicolon ) do begin // parse until the semicolon is reached
+        Tool.ReadNextAtom;
+        if ( Tool.UpAtomIs( 'READ' )) then
+          begin
+            Tool.ReadNextAtom;
+            CreateNode( Parent, 'read', Tool.GetAtom );
+          end
+        else if ( Tool.UpAtomIs( 'WRITE' )) then
+          begin
+            Tool.ReadNextAtom;
+            CreateNode( Parent, 'write', Tool.GetAtom );
+          end
+        else if ( Tool.UpAtomIs( 'INDEX' )) then
+          begin
+            Tool.ReadNextAtom;
+            CreateNode( Parent, 'index', Tool.GetAtom );
+          end;
+      end;
     end;
 
   var
     code: String;
   begin
     Parent:= CreateNode( Parent, Tool.ExtractPropName( Node, False ));
-    //CreateNode( Parent, 'Type', Tool.ExtractPropType( Node, False, False ));
     ParseTypeReference( Parent, Tool.ExtractPropType( Node, False, False )); // Class.Visibility.Properties.PropertyName
 
     code:= Tool.ExtractNode( Node, []);
@@ -381,7 +360,6 @@
       case Child.Desc of
         ctnClassExternal: ;
         ctnClassAbstract: ;
-        //ctnClassGUID: CreateNode( Parent, 'GUID', Tool.ExtractNode( Child, []));
         ctnClassInheritance: LoopSimple( AssertSection( Parent, SParent, 'Parent' ), Child, @ParseTypeReference );
         ctnClassPrivate: LoopClassMembers( AssertSection( Parent, SPrivate, 'Private', nkObject ), Child );
         ctnClassProtected: LoopClassMembers( AssertSection( Parent, SProtected, 'Protected', nkObject ), Child );
@@ -408,15 +386,14 @@
     CreateNode( Parent, 'NodeType', NodeDescriptionAsString( Node.Desc ));
 
     Child:= Node.FirstChild;
-    while ( Assigned( Child )) do
-      begin
-        case Child.Desc of
-          ctnEnumIdentifier: CreateNode( SEnum, '', Tool.ExtractNode( Child, []));
-        else
-          NotSupported( SEnum, Child );
-        end;
-        Child:= Child.NextBrother;
+    while ( Assigned( Child )) do begin
+      case Child.Desc of
+        ctnEnumIdentifier: CreateNode( SEnum, '', Tool.ExtractNode( Child, []));
+      else
+        NotSupported( SEnum, Child );
       end;
+      Child:= Child.NextBrother;
+    end;
   end;
 
   procedure ParseProcedure( Parent: TNode; Node: TCodeTreeNode );
@@ -498,8 +475,6 @@
     ExtractType( Parent, Node.FirstChild );
     GetSourceParams( Parent, Node );
     CreateNode( Parent, 'NodeType', NodeDescriptionAsString( Node.FirstChild.Desc ));
-
-//    WriteLn( 'Type context: ' + GetContext( Node ) + LineEnding + '  DefinitionName: ' + Tool.ExtractDefinitionName( Node ));
   end;
 
   procedure ParseGenericParams( Parent: TNode; Node: TCodeTreeNode );
@@ -596,7 +571,6 @@
         ctnClassClassVar: ExtractVar( AssertSection( Parent, SClassFields, 'ClassFields', nkObject ), Child.FirstChild );
         ctnConstSection: LoopSimple( AssertSection( Parent, SConsts, 'Consts', nkObject ), Child, @ParseConstant );
         ctnProcedure: ParseProcedure( AssertSection( Parent, SMethods, 'Methods', nkObject  ), Child );
-//        ctnProcedureHead: ParseProc( AssertSection( Parent, SMethods, 'Methods', nkObject  ), Child );
         ctnProperty: ParseProp( AssertSection( Parent, SProperties, 'Properties', nkObject  ), Child );
         ctnRecordCase: ParseRecordCase( Parent, Child );
       else
@@ -606,67 +580,4 @@
     end;
   end;
 
-  {  procedure TypeDefinition( Parent: TNode; Node: TCodeTreeNode );
-  begin
-    case Node.Desc of
-      ctnConstant: extracTypeSimple( Parent, Node.FirstChild, 'const' );
-      ctnEnumerationType: ParseEnumeration( Parent, Node, 'enum' );
-      ctnIdentifier, ctnPointerType: TypeSimple( Parent, Node, 'type' );
-      ctnClassOfType: TypeSimple( Parent, Node.FirstChild, 'type' );
-      ctnProcedureType: ParseProcedure( Parent, Node.FirstChild );
-      ctnSetType: ParseSet( Parent, Node );
-      ctnSpecialize: ParseSpecialize( Parent, Node );
-      ctnRangedArrayType: ParseRangedArray( Parent, Node );
-      ctnOpenArrayType: ParseOpenArray( Parent, Node );
-      ctnClassInterface,ctnDispinterface: TypeInterface( Parent, Node );
-      ctnClass,ctnObject,ctnRecordType,
-        ctnObjCClass,ctnObjCCategory,ctnCPPClass,
-        ctnClassHelper,ctnRecordHelper,ctnTypeHelper,
-        ctnObjCProtocol: TypeClass( Parent, Node );
-      else
-        NotSupported( Parent, Node );
-    end;
-  end;}
-
-
-
-// generic function to parse all sort of nodes and call the corresponding parse function.
-{  procedure ParseNode( Parent: TNode; Node: TCodeTreeNode );
-  var
-    comment: String;
-  begin
-    {if ( Parent.JSONType = jtObject ) then
-      begin
-        CreateStringNode( Parent, 'NodeType', NodeDescriptionAsString( Node.Desc ));
-        CreateStringNode( Parent, 'SourcePos', GetCodePos( Node ));
-        comment:= GetPasDocCommentsAsHTML( Tool, Node );
-        if ( comment > '' ) then
-          CreateStringNode( Parent, 'Comment', comment );
-      end;}
-    case Node.Desc of
-      ctnUseUnit: CreateUseUnit( Parent, Node );
-      ctnIdentifier, ctnPointerType: ParseIdentifier( Parent, Node, 'Type' );
-      ctnConstant: ParseIdentifier( Parent, Node, 'Const' );
-
-      ctnConstDefinition: ParseConst( Parent, Node );
-//      ctnTypeDefinition: ExtractConst( Parent, Node );
-
-      ctnEnumerationType: ParseEnumeration( Parent, Node );
-      ctnClassOfType: ParseIdentifier( Parent, Node.FirstChild, 'Type' );
-      //ctnProcedureType: ParseProc( Parent, Node );
-      //ctnProcedureHead: ParseProc( Parent, Node );
-      ctnSetType: ParseSet( Parent, Node );
-      ctnSpecialize: ParseSpecialize( Parent, Node );
-      ctnRangedArrayType: ParseRangedArray( Parent, Node );
-      ctnOpenArrayType: ParseOpenArray( Parent, Node );
-
-      ctnClassInterface,ctnDispinterface: ParseInterface( Parent, Node );
-      ctnClass,ctnObject,ctnRecordType,
-        ctnObjCClass,ctnObjCCategory,ctnCPPClass,
-        ctnClassHelper,ctnRecordHelper,ctnTypeHelper,
-        ctnObjCProtocol: ParseClass( Parent, Node );
-      else
-        NotSupported( Parent, Node ); // Unexpected node type. If this function is called it means there is a bug in this code.
-    end;
-  end;  }
 

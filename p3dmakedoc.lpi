@@ -20,13 +20,13 @@
     </PublishOptions>
     <RunParams>
       <local>
-        <CommandLineParams Value="parse /home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+        <CommandLineParams Value="parse p3dmakedoc.lpi -o tests/out/"/>
       </local>
       <FormatVersion Value="2"/>
       <Modes Count="1">
         <Mode0 Name="default">
           <local>
-            <CommandLineParams Value="parse /home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+            <CommandLineParams Value="parse p3dmakedoc.lpi -o tests/out/"/>
           </local>
         </Mode0>
       </Modes>
@@ -36,7 +36,7 @@
         <PackageName Value="CodeTools"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="6">
+    <Units Count="5">
       <Unit0>
         <Filename Value="p3dmakedoc.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -54,14 +54,10 @@
         <IsPartOfProject Value="True"/>
       </Unit3>
       <Unit4>
-        <Filename Value="p3dgendep.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit4>
-      <Unit5>
         <Filename Value="JsonTools/jsontools.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="JsonTools"/>
-      </Unit5>
+      </Unit4>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

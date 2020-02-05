@@ -6,9 +6,7 @@ uses
   {$IFDEF UNIX}{$IFDEF UseCThreads}
   cthreads,
   {$ENDIF}{$ENDIF}
-  Classes, SysUtils, CustApp, LazFileUtils, p3dparsepascal, DOM, p3dparsedoc,
-  p3dgendep
-  { you can add units after this };
+  Classes, SysUtils, CustApp, LazFileUtils, p3dparsepascal, p3dparsedoc;
 
 type
 
@@ -103,9 +101,11 @@ begin
           ctShowHelp: WriteHelp;
           ctParsePascal:
             case ( Ext ) of
-              '.pas', '.pp', '.lpr':
+              '.pas', '.pp':
                 ParsePascalUnit( Filename, OutFile );
-              '.lpi', '.lpk':
+              '.lpi', '.lpr':
+                ParsePascalProgram( FileName, OutFile );
+              '.lpk':
                 ParsePascalPackage( FileName, OutFile );
               else
                 WriteLn( 'Unsupported file extension: ' + Ext );
@@ -149,11 +149,6 @@ end;
 procedure TP3DMakeDoc.WriteHelp;
 begin
   { add your help code here }
-  writeln('Usage: ', ExeName, ' -h');
-  WriteLn( );
-  writeln('Usage: ', ExeName, ' -h');
-  writeln('Usage: ', ExeName, ' -h');
-
 end;
 
 var

@@ -31,6 +31,7 @@ interface
   procedure P3DParsePascalFinish;
 
   procedure ParsePascalUnit( FileName: String; OutFile: String );
+  procedure ParsePascalProgram( FileName: String; OutFile: String );
   procedure ParsePascalPackage( FileName: String; OutFile: String );
 
   const
@@ -243,17 +244,16 @@ begin
     NestedComments:= Tool.Scanner.NestedComments;
     LastCodeXYPos:= nil;
     LastComment:= '';
-    for i := 0 to ListOfPCodeXYPosition.Count - 1 do
-      begin
-        CodeXYPos:= PCodeXYPosition( ListOfPCodeXYPosition[ i ]);
-        CommentCode:= CodeXYPos^.Code;
-        CommentCode.LineColToPosition( CodeXYPos^.Y, CodeXYPos^.X, CommentStart );
-        if (( CommentStart < 1 ) or ( CommentStart > CommentCode.SourceLength )) then
-          continue;
-        CommentStr:= ExtractCommentContent( CommentCode.Source,CommentStart,
-                                            NestedComments, True, True, True );
-        AddComment;
-      end;
+    for i := 0 to ListOfPCodeXYPosition.Count - 1 do begin
+      CodeXYPos:= PCodeXYPosition( ListOfPCodeXYPosition[ i ]);
+      CommentCode:= CodeXYPos^.Code;
+      CommentCode.LineColToPosition( CodeXYPos^.Y, CodeXYPos^.X, CommentStart );
+      if (( CommentStart < 1 ) or ( CommentStart > CommentCode.SourceLength )) then
+        continue;
+      CommentStr:= ExtractCommentContent( CommentCode.Source,CommentStart,
+                                          NestedComments, True, True, True );
+      AddComment;
+    end;
 
     CommentStr:= '';
     CodeXYPos:= nil;
@@ -289,21 +289,6 @@ var
   CurNode: TCodeTreeNode;
   F: TFileStream;
   s: String;
-
-//  procedure TypeDefinition( Parent: TNode; Node: TCodeTreeNode ); forward;
-
-  {function CreateStringNode( Parent: TNode; Name: String; Value: String ): TNode;
-  begin
-    Result:= TJSONString.Create( Value );
-    if ( Parent.JSONType = jtArray ) then
-      TJSONArray( Parent ).Add( Result )
-    else if ( Parent.JSONType = jtObject ) then
-      TJSONObject( Parent ).Elements[ Name ]:= TJSONString( Result )
-    else
-      WriteLn( 'Warning, Create node: Parent is no array and no object: ', Name, ' parent: ', Parent.AsJSON );
-  end;}
-
-  {$DEFINE JSON}
 
   function GetCodePos( Node: TCodeTreeNode ): String;
   var
@@ -364,8 +349,9 @@ begin
   while Assigned( CurNode ) do begin
     case CurNode.Desc of
       ctnInterface: LoopUnitSections( UnitJSON, CurNode );
-      ctnUnit:;
+      ctnUnit, ctnProgram:;
       ctnImplementation:;
+      ctnEndPoint:;
       else
         NotSupported( UnitJSON, CurNode );
     end;
@@ -385,6 +371,177 @@ begin
   end;
 end;
 
+procedure ParsePascalProgram( FileName: String; OutFile: String );
+  function LoadUnitFromDom( Dom: TDOMNode ): String;
+  var
+    fn: TDOMNode;
+    UnitFn: TDOMNode;
+    UnitFnStr, Ext: String;
+    unitIdent: DOMString;
+    Ex: String;
+  begin
+    Result:= '';
+    fn:= Dom.FindNode( 'Filename' );
+    if ( not Assigned( fn )) then
+      exit;
+    UnitFn:= fn.Attributes.GetNamedItem( 'Value' );
+    if ( not Assigned( UnitFn )) then
+      exit;
+    UnitFnStr:= ExtractFilePath( FileName ) + UnitFn.TextContent;
+    Ex:= ExtractFileExt( UnitFn.TextContent );
+    if (( Ex = '.pp' ) or ( Ex = '.pas' ) or ( Ex = '.lpr' )) then begin
+    //if ( Assigned( Dom.FindNode( 'UnitName' ))) then begin // Pascal units have unitname tag, others don't
+      unitIdent:= ExtractFileName( UnitFn.TextContent );
+      ParsePascalUnit( UnitFnStr, ExtractFilePath( OutFile ) + unitIdent );
+      Result:= unitIdent;
+    end;
+  end;
+
+  function FindProgramName( Node: TDOMNode ): String;
+  begin
+    Result:= ExtractFileNameOnly( FileName );
+    if ( not Assigned( Node )) then
+      exit;
+    Node:= node.FindNode( 'General' );
+    if ( not Assigned( Node )) then
+      exit;
+    Node:= node.FindNode( 'Title' );
+    if ( not Assigned( Node )) then
+      exit;
+    Node:= Node.Attributes.GetNamedItem( 'Value' );
+    if ( not Assigned( Node )) then
+      exit;
+    Result:= Node.TextContent;
+  end;
+
+  function FindProgramFiles( Node: TDOMNode ): TDOMNode;
+  begin
+    Result:= node.FindNode( 'Units' );
+  end;
+
+var
+  xml: TXMLDocument;
+  PackageJSON, Units: TJsonNode;
+  rootnode, projopt, files, compopt: TDOMNode;
+  ext: String;
+  unitnm: String;
+  i: Integer;
+  F: TFileStream;
+  s: String;
+
+  procedure ReadProgramDependencies( Node: TDOMNode );
+  var
+    pkgs: TJsonNode;
+    i: Integer;
+    fn: TDOMNode;
+  begin
+    Node:= node.FindNode( 'RequiredPackages' );
+    if ( not Assigned( Node )) then
+      exit;
+    pkgs:= CreateNode( PackageJSON, 'Dependencies' ).AsArray;
+    for i:= 0 to Node.ChildNodes.Count - 1 do begin
+      fn:= Node.ChildNodes[ i ].FindNode( 'PackageName' );
+      if ( not Assigned( fn )) then
+        Continue;
+      fn:= fn.Attributes.GetNamedItem( 'Value' );
+      if ( not Assigned( fn )) then
+        Continue;
+      CreateNode( pkgs, '', fn.TextContent );
+    end;
+  end;
+
+  procedure AddIncludePath( Directory: String );
+  var
+    IncPathTemplate: TDefineTemplate;
+  begin
+    Directory:= ExpandFileName( Directory );
+
+    // add a sub template to extend the include search path #IncPath.
+    IncPathTemplate:= TDefineTemplate.Create(
+      '', // optional: the name of the template, useful for finding it later
+      '', // optional: a description
+      IncludePathMacroName,
+      IncludePathMacro + ';' + Directory
+      ,da_DefineRecurse
+      );
+    // add the include path template to the tree
+    CodeToolBoss.DefineTree.Add( IncPathTemplate );
+  end;
+
+  procedure ReadProgramSearchPaths( Node: TDOMNode );
+  var
+    Paths: WideString;
+    i: Integer;
+    BasePath: RawByteString;
+    Path: String;
+  begin
+    if ( Assigned( Node )) then
+      Node:= Node.FindNode( 'SearchPaths' );
+    if ( Assigned( Node )) then
+      Node:= Node.FindNode( 'IncludeFiles' );
+    if ( Assigned( Node )) then begin
+      BasePath:= ExtractFilePath( FileName );
+      Paths:= TDOMElement( Node ).AttribStrings[ 'Value' ];
+      for i:= 1 to WordCount( Paths, [ ';' ]) do begin
+        Path:= ExtractWord( i, Paths, [ ';' ]);
+        Path:= CreateAbsolutePath( Path, BasePath );
+        AddIncludePath( Path );
+      end;
+    end;
+  end;
+
+begin
+  if ( not FileExistsUTF8( Filename )) then
+    raise Exception.CreateFmt( 'The specified pascal program "%s" could not be found!', [ FileName ]);
+
+  ext:= ExtractFileExt( FileName );
+
+  if ( ext = '.lpr' ) then
+    FileName:= ChangeFileExt( FileName, '.lpi' );
+  ReadXMLFile( xml, FileName );
+  rootnode:= xml.FindNode( 'CONFIG' );
+  if ( Assigned( rootnode )) then begin
+    // PROJECT OPTIONS -->
+    projopt:= rootnode.FindNode( 'ProjectOptions' );
+    if ( not Assigned( projopt )) then
+      exit;
+
+    PackageJSON:= TJsonNode.Create;
+    CreateNode( PackageJSON, 'Type', 'program' );
+    CreateNode( PackageJSON, 'Name', FindProgramName( projopt ));
+    ReadProgramDependencies( projopt );
+
+    files:= FindProgramFiles( projopt );
+
+    Units:= CreateNode( PackageJSON, 'Units' ).AsArray;
+    if ( Assigned( files )) then
+      for i:= 0 to files.ChildNodes.Count - 1 do begin
+        unitnm:= LoadUnitFromDom( files.ChildNodes[ i ]);
+        if ( unitnm > '' ) then
+          CreateNode( Units, '', unitnm );
+      end;
+    // <-- PROJECT OPTIONS
+
+
+    // COMPILER OPTIONS -->
+    compopt:= rootnode.FindNode( 'CompilerOptions' );
+
+    if ( Assigned( compopt )) then
+      ReadProgramSearchPaths( compopt );
+    // <-- COMPILER OPTIONS
+
+    try
+      WriteLn( OutFile + '.program.json' );
+      F:= TFileStream.Create( OutFile + '.program.json', fmCreate );
+      PackageJSON.SaveToStream( F );
+    finally
+      F.Free;
+      PackageJSON.Free;
+    end;
+  end;
+  xml.Free;
+end;
+
 procedure ParsePascalPackage( FileName: String; OutFile: String );
   function LoadUnitFromDom( Dom: TDOMNode ): String;
   var
@@ -401,12 +558,11 @@ procedure ParsePascalPackage( FileName: String; OutFile: String );
     if ( not Assigned( UnitFn )) then
       exit;
     UnitFnStr:= ExtractFilePath( FileName ) + UnitFn.TextContent;
-    if ( Assigned( Dom.FindNode( 'UnitName' ))) then // Pascal units have unitname tag, others don't
-      begin
-        unitIdent:= TDOMElement( Dom.FindNode( 'UnitName' )).GetAttribute( 'Value' );
-        ParsePascalUnit( UnitFnStr, ExtractFilePath( OutFile ) + unitIdent );
-        Result:= unitIdent;
-      end;
+    if ( Assigned( Dom.FindNode( 'UnitName' ))) then begin // Pascal units have unitname tag, others don't
+      unitIdent:= TDOMElement( Dom.FindNode( 'UnitName' )).GetAttribute( 'Value' );
+      ParsePascalUnit( UnitFnStr, ExtractFilePath( OutFile ) + unitIdent );
+      Result:= unitIdent;
+    end;
   end;
 
   function FindPackageName( Node: TDOMNode ): String;
@@ -446,16 +602,15 @@ var
   begin
     Node:= node.FindNode( 'RequiredPkgs' );
     pkgs:= CreateNode( PackageJSON, 'Dependencies' ).AsArray;
-    for i:= 0 to Node.ChildNodes.Count - 1 do
-      begin
-        fn:= Node.ChildNodes[ i ].FindNode( 'PackageName' );
-        if ( not Assigned( fn )) then
-          Continue;
-        fn:= fn.Attributes.GetNamedItem( 'Value' );
-        if ( not Assigned( fn )) then
-          Continue;
-        CreateNode( pkgs, '', fn.TextContent );
-      end;
+    for i:= 0 to Node.ChildNodes.Count - 1 do begin
+      fn:= Node.ChildNodes[ i ].FindNode( 'PackageName' );
+      if ( not Assigned( fn )) then
+        Continue;
+      fn:= fn.Attributes.GetNamedItem( 'Value' );
+      if ( not Assigned( fn )) then
+        Continue;
+      CreateNode( pkgs, '', fn.TextContent );
+    end;
   end;
 
   procedure AddIncludePath( Directory: String );
@@ -508,37 +663,36 @@ begin
   ext:= ExtractFileExt( FileName );
   if ( Assigned( node )) then
     case ext of
-      '.lpk':
-        begin
-          node:= node.FindNode( 'Package' );
-          if ( not Assigned( node )) then
-            exit;
+      '.lpk': begin
+        node:= node.FindNode( 'Package' );
+        if ( not Assigned( node )) then
+          exit;
 
-          PackageJSON:= TJsonNode.Create;
-          CreateNode( PackageJSON, 'Type', 'package' );
-          CreateNode( PackageJSON, 'Name', FindPackageName( node ));
-          ReadPackageDependencies( node );
+        PackageJSON:= TJsonNode.Create;
+        CreateNode( PackageJSON, 'Type', 'package' );
+        CreateNode( PackageJSON, 'Name', FindPackageName( node ));
+        ReadPackageDependencies( node );
 
-          ReadPackageSearchPaths( node );
+        ReadPackageSearchPaths( node );
 
-          node:= FindPackageFiles( node );
+        node:= FindPackageFiles( node );
 
-          Units:= CreateNode( PackageJSON, 'Units' ).AsArray;
-          for i:= 0 to node.ChildNodes.Count - 1 do begin
-            unitnm:= LoadUnitFromDom( node.ChildNodes[ i ]);
-            if ( unitnm > '' ) then
-              CreateNode( Units, '', unitnm );
-          end;
-
-          try
-            WriteLn( OutFile + '.package.json' );
-            F:= TFileStream.Create( OutFile + '.package.json', fmCreate );
-            PackageJSON.SaveToStream( F );
-          finally
-            F.Free;
-            PackageJSON.Free;
-          end;
+        Units:= CreateNode( PackageJSON, 'Units' ).AsArray;
+        for i:= 0 to node.ChildNodes.Count - 1 do begin
+          unitnm:= LoadUnitFromDom( node.ChildNodes[ i ]);
+          if ( unitnm > '' ) then
+            CreateNode( Units, '', unitnm );
         end;
+
+        try
+          WriteLn( OutFile + '.package.json' );
+          F:= TFileStream.Create( OutFile + '.package.json', fmCreate );
+          PackageJSON.SaveToStream( F );
+        finally
+          F.Free;
+          PackageJSON.Free;
+        end;
+      end;
     end;
   xml.Free;
 end;
