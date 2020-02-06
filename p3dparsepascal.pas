@@ -349,7 +349,8 @@ begin
   while Assigned( CurNode ) do begin
     case CurNode.Desc of
       ctnInterface: LoopUnitSections( UnitJSON, CurNode );
-      ctnUnit, ctnProgram:;
+      ctnUnit:;
+      ctnProgram: LoopUnitSections( UnitJSON, Tool.Tree.Root );
       ctnImplementation:;
       ctnEndPoint:;
       else
@@ -514,6 +515,7 @@ begin
     files:= FindProgramFiles( projopt );
 
     Units:= CreateNode( PackageJSON, 'Units' ).AsArray;
+
     if ( Assigned( files )) then
       for i:= 0 to files.ChildNodes.Count - 1 do begin
         unitnm:= LoadUnitFromDom( files.ChildNodes[ i ]);

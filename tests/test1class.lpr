@@ -4,20 +4,21 @@ type
 
   { TTestClass }
 
-  TTestClass = class
+  // This is a test class
+  TTestClass = class 
     private
-      FIpriv: Integer;
-      FBpriv: Boolean;
+      FIpriv: Integer; // private integer field
+      FBpriv: Boolean; // private boolean field
 
-      procedure TestProcPriv( A: Integer );
-      function TestFuncPriv( A: Integer ): String;
-      class function TestClassFuncPriv( A: Integer ): String;
+      procedure TestProcPriv( A: Integer ); // private procedure
+      function TestFuncPriv( A: Integer ): String; // private function
+      class function TestClassFuncPriv( A: Integer ): String; // private class function
 
-      property Ipriv: Integer read FIpriv write FIpriv;
+      property Ipriv: Integer read FIpriv write FIpriv; // private property
       property Bpriv: Integer read FBpriv write FBpriv;
 
     protected
-      FIprot: Integer;
+      FIprot: Integer; 
       FBprot: Boolean;
 
       procedure TestProcProt( A: Integer );

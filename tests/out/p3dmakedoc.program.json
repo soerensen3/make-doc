@@ -1,0 +1,13 @@
+{
+	"Type": "program",
+	"Name": "P3DMakeDoc",
+	"Dependencies": [
+		"CodeTools"
+	],
+	"Units": [
+		"p3dmakedoc.lpr",
+		"p3dparsepascal.pas",
+		"p3dparsedoc.pas",
+		"jsontools.pas"
+	]
+}

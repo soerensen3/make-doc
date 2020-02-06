@@ -245,7 +245,7 @@ begin
         if (( CommentStart < 1 ) or ( CommentStart > CommentCode.SourceLength )) then
           continue;
         CommentStr:= ExtractCommentContent( CommentCode.Source,CommentStart,
-                                            NestedComments, True, True, True );
+                                            NestedComments, True, True, False );
         AddComment;
       end;
 

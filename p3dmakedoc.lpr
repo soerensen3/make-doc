@@ -10,7 +10,7 @@ uses
 
 type
 
-  TP3DCommandType = ( ctShowHelp, ctParsePascal, ctGenerateHTML, ctGenerateDepedencyGraph );
+  TP3DCommandType = ( ctShowHelp, ctParsePascal{, ctGenerateHTML, ctGenerateDepedencyGraph} );
 
   { TP3DCommand }
 
@@ -73,9 +73,7 @@ begin
     while i <= Paramcount do begin
       case ParamStr( i ) of
         '-h', '--help': NewCommand( ctShowHelp );
-        'gendoc': NewCommand( ctGenerateHTML );
         'parse': NewCommand( ctParsePascal );
-        'gendep': NewCommand( ctGenerateDepedencyGraph );
       else begin
         if ( not Assigned( CurrentCommand )) then
           raise Exception.Create( 'No command defined!' )
@@ -110,15 +108,14 @@ begin
               else
                 WriteLn( 'Unsupported file extension: ' + Ext );
             end;
-          ctGenerateHTML: begin
+{          ctGenerateHTML: begin
               if ( not DirectoryExistsUTF8( FileName )) then
                 Exception.Create( 'Can not generate doc because the specified input directory does not exist: ' + FileName );
               if ( not DirectoryExistsUTF8( CurrentCommand.OutputDir )) then
                 Exception.Create( 'Can not generate doc because the specified output directory does not exist: ' + CurrentCommand.OutputDir );
 
               ParseDocDirectory( Filename, CurrentCommand.OutputDir )
-            end;
-          ctGenerateDepedencyGraph:;
+            end;}
         end;
       end;
     end;
