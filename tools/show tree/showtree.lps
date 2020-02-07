@@ -11,7 +11,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="22"/>
       </Unit0>
       <Unit1>
         <Filename Value="showtreeunit.pas"/>
@@ -22,16 +22,16 @@
         <IsVisibleTab Value="True"/>
         <TopLine Value="217"/>
         <CursorPos X="79" Y="248"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="22"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="../../p3dparsepascal.pas"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="239"/>
-        <CursorPos Y="260"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="343"/>
+        <CursorPos X="42" Y="351"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -124,139 +124,139 @@
         <EditorIndex Value="2"/>
         <TopLine Value="3750"/>
         <CursorPos X="3" Y="3758"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="../../../../../../fpcupdeluxe/lazarus/components/codetools/basiccodetools.pas"/>
         <UnitName Value="BasicCodeTools"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="56"/>
-        <CursorPos X="10" Y="77"/>
-        <UsageCount Value="10"/>
+        <TopLine Value="38"/>
+        <CursorPos X="24" Y="194"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit15>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="../../p3dparsepascal.pas"/>
-        <Caret Line="801" Column="31" TopLine="782"/>
+        <Caret Line="804" TopLine="794"/>
       </Position1>
       <Position2>
-        <Filename Value="showtreeunit.pas"/>
-        <Caret Line="115" Column="3" TopLine="96"/>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="806" Column="32" TopLine="795"/>
       </Position2>
       <Position3>
         <Filename Value="../../p3dparsepascal.pas"/>
-        <Caret Line="804" TopLine="794"/>
+        <Caret Line="807" Column="27" TopLine="792"/>
       </Position3>
       <Position4>
-        <Filename Value="../../p3dparsepascal.pas"/>
-        <Caret Line="806" Column="32" TopLine="795"/>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="129" Column="30" TopLine="116"/>
       </Position4>
       <Position5>
-        <Filename Value="../../p3dparsepascal.pas"/>
-        <Caret Line="807" Column="27" TopLine="792"/>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="136" Column="24" TopLine="131"/>
       </Position5>
       <Position6>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="129" Column="30" TopLine="116"/>
+        <Caret Line="184" TopLine="180"/>
       </Position6>
       <Position7>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="136" Column="24" TopLine="131"/>
+        <Caret Line="172" Column="54" TopLine="146"/>
       </Position7>
       <Position8>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="184" TopLine="180"/>
+        <Caret Line="170" Column="16" TopLine="154"/>
       </Position8>
       <Position9>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="172" Column="54" TopLine="146"/>
+        <Caret Line="172" Column="34" TopLine="158"/>
       </Position9>
       <Position10>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="170" Column="16" TopLine="154"/>
+        <Caret Line="170" Column="66" TopLine="158"/>
       </Position10>
       <Position11>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="172" Column="34" TopLine="158"/>
+        <Caret Line="172" Column="55" TopLine="158"/>
       </Position11>
       <Position12>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="170" Column="66" TopLine="158"/>
+        <Caret Line="171" Column="73" TopLine="158"/>
       </Position12>
       <Position13>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="172" Column="55" TopLine="158"/>
+        <Caret Line="168" Column="7" TopLine="152"/>
       </Position13>
       <Position14>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="171" Column="73" TopLine="158"/>
+        <Caret Line="172" Column="77" TopLine="158"/>
       </Position14>
       <Position15>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="168" Column="7" TopLine="152"/>
+        <Caret Line="30" TopLine="14"/>
       </Position15>
       <Position16>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="172" Column="77" TopLine="158"/>
+        <Caret Line="32" Column="74" TopLine="15"/>
       </Position16>
       <Position17>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="30" TopLine="14"/>
+        <Caret Line="240" Column="33" TopLine="215"/>
       </Position17>
       <Position18>
-        <Filename Value="showtreeunit.pas"/>
-        <Caret Line="32" Column="74" TopLine="15"/>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="539" TopLine="408"/>
       </Position18>
       <Position19>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="240" Column="33" TopLine="215"/>
+        <Caret Line="278" Column="100" TopLine="260"/>
       </Position19>
       <Position20>
-        <Filename Value="../../p3dparsepascal.pas"/>
-        <Caret Line="539" TopLine="408"/>
+        <Filename Value="showtreeunit.pas"/>
+        <Caret Line="191" Column="26" TopLine="188"/>
       </Position20>
       <Position21>
         <Filename Value="showtreeunit.pas"/>
-        <Caret Line="278" Column="100" TopLine="260"/>
+        <Caret Line="231" Column="33" TopLine="219"/>
       </Position21>
       <Position22>
-        <Filename Value="showtreeunit.pas"/>
-        <Caret Line="191" Column="26" TopLine="188"/>
+        <Filename Value="../../../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
+        <Caret Line="309" Column="14" TopLine="290"/>
       </Position22>
       <Position23>
-        <Filename Value="showtreeunit.pas"/>
-        <Caret Line="231" Column="33" TopLine="219"/>
+        <Filename Value="../../../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
+        <Caret Line="3856" Column="3" TopLine="3853"/>
       </Position23>
       <Position24>
         <Filename Value="../../../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
-        <Caret Line="309" Column="14" TopLine="290"/>
+        <Caret Line="306" Column="14" TopLine="290"/>
       </Position24>
       <Position25>
         <Filename Value="../../../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
-        <Caret Line="3856" Column="3" TopLine="3853"/>
+        <Caret Line="3693" Column="45" TopLine="3679"/>
       </Position25>
       <Position26>
         <Filename Value="../../../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
-        <Caret Line="306" Column="14" TopLine="290"/>
+        <Caret Line="306" Column="26" TopLine="291"/>
       </Position26>
       <Position27>
-        <Filename Value="../../../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
-        <Caret Line="3693" Column="45" TopLine="3679"/>
-      </Position27>
-      <Position28>
-        <Filename Value="../../../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
-        <Caret Line="306" Column="26" TopLine="291"/>
-      </Position28>
-      <Position29>
         <Filename Value="showtreeunit.pas"/>
         <Caret Line="231" Column="50" TopLine="219"/>
-      </Position29>
-      <Position30>
+      </Position27>
+      <Position28>
         <Filename Value="showtreeunit.pas"/>
         <Caret Line="247" Column="33" TopLine="217"/>
+      </Position28>
+      <Position29>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="33" Column="23" TopLine="13"/>
+      </Position29>
+      <Position30>
+        <Filename Value="../../p3dparsepascal.pas"/>
+        <Caret Line="326" Column="3" TopLine="306"/>
       </Position30>
     </JumpHistory>
     <RunParams>

@@ -15,6 +15,7 @@ interface
     CodeToolManager,
     BasicCodeTools,
     DefineTemplates,
+    Generics.Collections,
     //FileUtil,
     strutils,
     FindDeclarationTool,
@@ -41,6 +42,7 @@ interface
     {Code tool}
     Tool: TCodeTool;
     GlobalRefContext: TJsonNode = nil;
+    UnitDict: specialize TObjectDictionary < String, TJsonNode > = nil;
 
 
 implementation
@@ -52,13 +54,14 @@ begin
 //  Opts:= TCodeToolsOptions.Create;
 //  Opts.LoadFromFile( ConfigFilename );
   CodeToolBoss.CompilerDefinesCache.LoadFromFile( ConfigFilename );
+  UnitDict:= specialize TObjectDictionary < String, TJsonNode >.Create;
   //Opts.SaveToFile(ConfigFilename);
 //  Opts.Free;
 end;
 
 procedure P3DParsePascalFinish;
 begin
-
+  FreeAndNil( UnitDict );
 end;
 
 function TextToHTML(Txt: string): string; //Modified some Code of CodeHelp.pas by Mattias Gaertner
@@ -206,6 +209,159 @@ var
   NestedComments: Boolean;
   CommentStr, LastComment: String;
 
+  function ShiftLeft(const Comment: String) : String;
+  var
+    Lines : TStringList;
+    S : String;
+    I, J, LeftMost : Integer;
+  begin
+    try
+      Lines := nil;
+      Lines := TStringList.Create;
+      Lines.Text := Comment;
+
+      LeftMost := Length(Comment);
+
+      for I := 0 to Lines.Count - 1 do
+      begin
+        if LeftMost <= 1 then
+          Break;
+
+        S := Lines[I];
+        J := 1;
+        while (J <= Length(S)) and (J < LeftMost) and (S[J] = ' ') do
+          Inc(J);
+
+        if J < LeftMost then
+          LeftMost := J;
+      end;
+
+      if LeftMost > 1 then
+        for I := 0 to Lines.Count - 1 do
+          Lines[I] := Copy(Lines[I], LeftMost, Length(Lines[I]) - LeftMost + 1);
+
+      Result := Lines.Text;
+    finally
+      FreeAndNil(Lines);
+    end;
+  end;
+
+  procedure AddComment;
+  begin
+    if   ( not Assigned( CodeXYPos )
+      or ( not Assigned( LastCodeXYPos ))
+      or ( CodeXYPos^.Code <> LastCodeXYPos^.Code )
+      or ( CodeXYPos^.Y - LastCodeXYPos^.Y > 10 )) then begin
+        // the last comment is at a different position => add a source link
+        if ( LastComment <> '' ) then
+          Result:= Result + Trim( DelChars( DelChars( LastComment, #10 ), #13 )) //TextToHTML(LastComment)
+            +'@br ';
+        LastComment:= Trim( CommentStr );
+    end else begin
+      // these two comments are very near together => combine them
+      if ( LastComment <> '' ) then
+        LastComment += '@br ';
+      LastComment += CommentStr;
+    end;
+    LastCodeXYPos:= CodeXYPos;
+  end;
+
+  {procedure AddComment;
+  begin
+    if (CodeXYPos=nil) or (LastCodeXYPos=nil)
+    or (CodeXYPos^.Code<>LastCodeXYPos^.Code)
+    or (CodeXYPos^.Y-LastCodeXYPos^.Y>10) then begin
+      // the last comment is at a different position => add a source link
+      if LastComment<>'' then
+        Result:=Result+'<span class="comment">'+TextToHTML(ShiftLeft(LastComment))
+          +' ('+SourcePosToFPDocHint(LastCodeXYPos^,'Source')+')'
+          +'</span><br>'+LineEnding;
+      LastComment:=CommentStr;
+    end else begin
+      // these two comments are very near together => combine them
+      if LastComment<>'' then
+        LastComment+=LineEnding;
+      LastComment+=CommentStr;
+    end;
+    LastCodeXYPos:=CodeXYPos;
+  end;}
+
+  function ExtractComment(const Source: String;
+    CommentStart: Integer) : String;
+  var
+    CommentEnd, XPos: Integer;
+  begin
+    XPos := CodeXYPos^.X;
+    CommentEnd := FindCommentEnd(Source, CommentStart, NestedComments);
+
+    case Source[CommentStart] of
+    '/':
+      begin
+        CommentStart := CommentStart + 2;
+        XPos := 0;
+      end;
+    '(':
+      begin
+        CommentStart := CommentStart + 2;
+        CommentEnd := CommentEnd - 2;
+        XPos := XPos + 1;
+      end;
+    '{':
+      begin
+        CommentStart := CommentStart + 1;
+        CommentEnd := CommentEnd - 1;
+      end;
+    end;
+    Result:=Copy(Source, CommentStart, CommentEnd - CommentStart);
+
+    Result := TrimRight(Result);
+
+    if XPos > 0 then
+      Result := StringOfChar(' ', XPos) + Result;
+  end;
+
+begin
+  Result:='';
+  if (Tool=nil) or (Node=nil) then exit;
+  ListOfPCodeXYPosition:=nil;
+  try
+    if not Tool.GetPasDocComments(Node,ListOfPCodeXYPosition) then exit;
+    if ListOfPCodeXYPosition=nil then exit;
+    NestedComments := Tool.Scanner.NestedComments;
+    LastCodeXYPos := nil;
+    LastComment := '';
+    for i := 0 to ListOfPCodeXYPosition.Count - 1 do
+    begin
+      CodeXYPos := PCodeXYPosition(ListOfPCodeXYPosition[i]);
+      CommentCode := CodeXYPos^.Code;
+      CommentCode.LineColToPosition(CodeXYPos^.Y,CodeXYPos^.X,CommentStart);
+      if (CommentStart<1) or (CommentStart>CommentCode.SourceLength)
+      then
+        continue;
+      CommentStr := ExtractComment(CommentCode.Source, CommentStart);
+      AddComment;
+    end;
+    CommentStr:='';
+    CodeXYPos:=nil;
+    AddComment;
+  finally
+    FreeListOfPCodeXYPosition(ListOfPCodeXYPosition);
+  end;
+end;
+
+{
+
+function GetPasDocCommentsAsHTML(Tool: TFindDeclarationTool;
+  Node: TCodeTreeNode): string;
+var
+  ListOfPCodeXYPosition: TFPList;
+  i: Integer;
+  CodeXYPos, LastCodeXYPos: PCodeXYPosition;
+  CommentCode: TCodeBuffer;
+  CommentStart: integer;
+  NestedComments: Boolean;
+  CommentStr, LastComment: String;
+
   procedure AddComment;
   begin
     if (( not Assigned( CodeXYPos ) or ( not Assigned( LastCodeXYPos )) or
@@ -263,7 +419,7 @@ begin
     FreeListOfPCodeXYPosition( ListOfPCodeXYPosition );
   end;
 end;
-
+}
 function CreateNode( Parent: TJsonNode; Name: String; Value: String ): TJsonNode; alias : 'CreateStringNode';
 begin
   if ( Parent.Kind = nkArray ) then
@@ -279,6 +435,13 @@ begin
   Result:= Parent.Add( Name )
 end;
 
+procedure TryParsePascalUnit( FileName: String; OutFile: String );
+begin
+  if ( FileExists( FileName ) and ( not UnitDict.ContainsKey( ExtractFileNameOnly( FileName )))) then
+    ParsePascalUnit( FileName, OutFile );
+end;
+
+
 procedure ParsePascalUnit( FileName: String; OutFile: String );
 type
   TNode = TJsonNode;
@@ -289,6 +452,8 @@ var
   CurNode: TCodeTreeNode;
   F: TFileStream;
   s: String;
+  Units: TStrings;
+  i: Integer;
 
   function GetCodePos( Node: TCodeTreeNode ): String;
   var
@@ -336,6 +501,15 @@ begin
     Tool:= TCodeTool( CodeToolBoss.GetCodeToolForSource( Code, False, False ));
 
   UnitJSON:= TJsonNode.Create.AsObject;
+  UnitDict.Add( ExtractFileNameOnly( FileName ), UnitJSON );
+  WriteLn( 'Loaded ', ExtractFileNameOnly( FileName ));
+
+  Tool.FindUsedUnitFiles( Units );
+  for i:= 0 to Units.Count - 1 do
+    TryParsePascalUnit( Units[ i ], ExtractFilePath( OutFile ) + ExtractFileNameOnly( Units[ i ]));
+
+  Tool:= TCodeTool( CodeToolBoss.GetCodeToolForSource( Code, False, False ));
+
 
   GlobalRefContext:= UnitJSON;
   CurNode:= Tool.Tree.Root;
@@ -363,12 +537,13 @@ begin
 
   try
     WriteLn( OutFile + '.unit.json' );
+    WriteLn( 'Uses: ' + UnitJSON.Child( 'Uses' ).AsJson );
     F:= TFileStream.Create( OutFile + '.unit.json', fmCreate );
     s:= UnitJSON.AsJson;
     F.Write( s[ 1 ], Length( s ));
   finally
     F.Free;
-    UnitJSON.Free;
+    //UnitJSON.Free;
   end;
 end;
 
@@ -388,12 +563,12 @@ procedure ParsePascalProgram( FileName: String; OutFile: String );
     UnitFn:= fn.Attributes.GetNamedItem( 'Value' );
     if ( not Assigned( UnitFn )) then
       exit;
-    UnitFnStr:= ExtractFilePath( FileName ) + UnitFn.TextContent;
-    Ex:= ExtractFileExt( UnitFn.TextContent );
+    UnitFnStr:= UnitFn.TextContent;
+    Ex:= ExtractFileExt( UnitFnStr );
     if (( Ex = '.pp' ) or ( Ex = '.pas' ) or ( Ex = '.lpr' )) then begin
     //if ( Assigned( Dom.FindNode( 'UnitName' ))) then begin // Pascal units have unitname tag, others don't
-      unitIdent:= ExtractFileName( UnitFn.TextContent );
-      ParsePascalUnit( UnitFnStr, ExtractFilePath( OutFile ) + unitIdent );
+      unitIdent:= ExtractFileNameOnly( UnitFnStr );
+      TryParsePascalUnit( ExtractFilePath( FileName ) + UnitFnStr, ExtractFilePath( OutFile ) + unitIdent );
       Result:= unitIdent;
     end;
   end;
@@ -562,7 +737,7 @@ procedure ParsePascalPackage( FileName: String; OutFile: String );
     UnitFnStr:= ExtractFilePath( FileName ) + UnitFn.TextContent;
     if ( Assigned( Dom.FindNode( 'UnitName' ))) then begin // Pascal units have unitname tag, others don't
       unitIdent:= TDOMElement( Dom.FindNode( 'UnitName' )).GetAttribute( 'Value' );
-      ParsePascalUnit( UnitFnStr, ExtractFilePath( OutFile ) + unitIdent );
+      TryParsePascalUnit( UnitFnStr, ExtractFilePath( OutFile ) + unitIdent );
       Result:= unitIdent;
     end;
   end;

@@ -60,6 +60,9 @@
   end;
 
   function CreateTypeNode( Parent: TNode; TypeName: String; Context: TNode ): TNode;
+  var
+    UnitContext: String = '';
+
     function WalkJSON( ThisParent: TNode ): String;
     begin
       if ( Assigned( ThisParent ) and ( ThisParent <> ThisParent.Root )) then
@@ -68,13 +71,37 @@
         Result:= '';
     end;
 
+    function ParseUnits( Name: String ): TNode;
+    var
+      Units: TJsonNode;
+      thisUnit: TJsonNode;
+      i: Integer;
+      DebugS: String;
+    begin
+      Result:= nil;
+      Units:= UnitJSON.Child( 'Uses' );
+      if ( Assigned( Units )) then
+        for i:= Units.Count - 1 downto 0 do begin
+          DebugS:= 'Trying ' + Units.Child( i ).AsString + '  looking for: ' + Name;
+          if ( UnitDict.TryGetValue( Units.Child( i ).AsString, thisUnit )) then begin
+            Result:= thisUnit.Child( 'Types' ).Child( Name );
+            if ( Assigned( Result )) then begin
+              UnitContext:= Units.Child( i ).AsString;
+              WriteLn( DebugS );
+              break;
+            end;
+          end;
+        end;
+    end;
+
+
     function FindType( Name: String; Context: TNode ): TNode;
     var
       tp, params: TJsonNode;
       i: Integer;
     begin
       if ( Context = nil ) then
-        exit( nil );
+        exit( ParseUnits( Name ));
       tp:= Context.Child( 'Types' );
       if ( Assigned( tp )) then
         tp:= tp.Child( Name )
@@ -94,17 +121,41 @@
         Result:= FindType( Name, Context.Parent );
     end;
 
+    function ArrayContains( AName: String; Node: TNode ): Boolean;
+    var
+      i: Integer;
+    begin
+      Result:= False;
+      for i:= 0 to Node.Count - 1 do
+        if ( Node.Child( i ).AsString = AName ) then begin
+          Result:= True;
+          break;
+        end;
+    end;
+
   var
     tpcont: TNode;
+    dep: TNode = nil;
+    ContextS: String;
   begin
     Result:= CreateNode( Parent, 'Type' );
 
     CreateNode( Result, 'Name', TypeName );
     CreateNode( Result, 'NodeType', 'TypeReference' );
 
+    UnitContext:= ExtractFileName( OutFile );
     tpcont:= FindType( TypeName, Context );
-    if ( Assigned( tpcont )) then
-      CreateNode( Result, 'Context', WalkJSON( tpcont )).AsString;
+    if ( Assigned( tpcont )) then begin
+      ContextS:= UnitContext + WalkJSON( tpcont );
+      CreateNode( Result, 'Context', ContextS ).AsString;
+      if ( not Assigned( Context )) then
+        exit;
+      dep:= Context.Child( 'TypeDep' );
+      if ( not Assigned( dep )) then
+        dep:= Context.Add( 'TypeDep', nkArray );
+      if ( not ArrayContains( ContextS, dep )) then
+        dep.Add( '', ContextS );
+    end;
     //CreateNode( Result, 'Test', WalkJSON( Context ));
   end;
 
@@ -537,7 +588,14 @@
         ctnVarSection: LoopSimple( AssertSection( Parent, SVars, 'Vars', nkObject ), Child, @ParseVariable );
         ctnConstSection: LoopSimple( AssertSection( Parent, SConsts, 'Consts', nkObject ), Child, @ParseConstant );
         ctnUsesSection: LoopSimple( AssertSection( Parent, SUses, 'Uses' ), Child, @ParseUseUnit );
-        ctnProcedure: ParseProcedure( AssertSection( Parent, SFuncs, 'Functions', nkObject ), Child );
+        ctnProcedure: begin
+          {WriteLn( 'ClassName is ' + Tool.ExtractClassNameOfProcNode( Child, False ));
+          WriteLn( GetCodePos( Child ));
+          WriteLn( Tool.ExtractNode( Child, []));
+          WriteLn('-----------------' );}
+          if ( Tool.ExtractClassNameOfProcNode( Child, False ) = '' ) then // Ignore proc bodies in programs (lpr)
+            ParseProcedure( AssertSection( Parent, SFuncs, 'Functions', nkObject ), Child );
+        end
       else
         NotSupported( Parent, Child );
       end;

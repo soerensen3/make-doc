@@ -7,14 +7,158 @@
       <Unit>
         <Filename Value="test1class.lpr"/>
         <IsPartOfProject Value="True"/>
+        <TopLine Value="58"/>
+        <CursorPos X="30" Y="60"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/idecontexthelpedit.pas"/>
+        <ComponentName Value="ContextHelpEditorDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="IDEContextHelpEdit"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="531"/>
+        <CursorPos X="15" Y="540"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/sourceeditor.pp"/>
+        <ComponentName Value="SourceNotebook"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SourceEditor"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="10962"/>
+        <CursorPos X="21" Y="10968"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/lcl/lclproc.pas"/>
+        <UnitName Value="LCLProc"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="1918"/>
+        <CursorPos X="31" Y="1920"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/lazutils/LazLoggerIntf.inc"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="77"/>
+        <CursorPos X="10" Y="108"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/lazutils/LazLoggerImpl.inc"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="576"/>
+        <CursorPos X="3" Y="407"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../p3dparsepascal.inc"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="157"/>
+        <CursorPos X="31" Y="36"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../p3dparsedoc.pas"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="10"/>
+        <CursorPos X="23" Y="35"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../p3dparsepascal.pas"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="232"/>
+        <CursorPos X="14" Y="238"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/codehelp.pas"/>
+        <UnitName Value="CodeHelp"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="46"/>
-        <CursorPos X="14" Y="24"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="2768"/>
+        <CursorPos Y="2777"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory HistoryIndex="14">
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/sourceeditor.pp"/>
+        <Caret Line="456" Column="37" TopLine="429"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/sourceeditor.pp"/>
+        <Caret Line="3493" Column="23" TopLine="3488"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/idecontexthelpedit.pas"/>
+        <Caret Line="195" Column="45" TopLine="182"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/idecontexthelpedit.pas"/>
+        <Caret Line="126" Column="10" TopLine="107"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/idecontexthelpedit.pas"/>
+        <Caret Line="116" Column="24" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/idecontexthelpedit.pas"/>
+        <Caret Line="540" Column="15" TopLine="531"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/lcl/lclproc.pas"/>
+        <Caret Line="264" Column="10" TopLine="243"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/lcl/lclproc.pas"/>
+        <Caret Line="1920" Column="31" TopLine="1918"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/lazutils/LazLoggerIntf.inc"/>
+        <Caret Line="108" Column="10" TopLine="77"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/sourceeditor.pp"/>
+        <Caret Line="1188" Column="36" TopLine="1171"/>
+      </Position>
+      <Position>
+        <Filename Value="../p3dparsepascal.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/codehelp.pas"/>
+        <Caret Line="327" Column="28" TopLine="321"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/codehelp.pas"/>
+        <Caret Line="2765" Column="44" TopLine="2734"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/codehelp.pas"/>
+        <Caret Line="336" Column="14" TopLine="336"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/ide/codehelp.pas"/>
+        <Caret Line="329" Column="24" TopLine="315"/>
+      </Position>
+    </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes ActiveMode=""/>

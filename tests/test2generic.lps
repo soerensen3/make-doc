@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="test2generic.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="8"/>
+        <CursorPos X="32" Y="44"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="13">
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="8" Column="20"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="22" Column="45"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="9"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="8" Column="5"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="31"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="14" Column="28"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="34" Column="43"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="38" Column="51"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="37"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="34" Column="44" TopLine="2"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="22" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="23" Column="33"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="45" Column="50" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="test2generic.lpr"/>
+        <Caret Line="38" Column="48" TopLine="8"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
