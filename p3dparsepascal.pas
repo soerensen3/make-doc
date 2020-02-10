@@ -23,6 +23,7 @@ interface
     CodeAtom,
     DOM,
     XMLRead,
+    fpjson, // Pretty Print
     JsonTools,
     jsonparser;
 
@@ -34,15 +35,51 @@ interface
   procedure ParsePascalUnit( FileName: String; OutFile: String );
   procedure ParsePascalProgram( FileName: String; OutFile: String );
   procedure ParsePascalPackage( FileName: String; OutFile: String );
+  procedure MakeDotFile( OutFile: String );
+
 
   const
     ConfigFilename = 'config.xml'; //Filename of CodeTools config
+
+    DotGraph =
+      'digraph G {' + LineEnding +
+      '  graph [fontname = "Roboto", rankdir = "LR"];' + LineEnding +
+      '  node [fontname = "Roboto"];' + LineEnding +
+      '  edge [fontname = "Roboto"];' + LineEnding +
+      '  bgcolor=transparent;' + LineEnding +
+      '$content$' + LineEnding +
+      '}' + LineEnding;
+
+    DotUnit =
+      '  subgraph cluster_$CleanName$ {' + LineEnding +
+      '    color=lightblue;' + LineEnding +
+      '    label = "$Name$";' + LineEnding +
+      '    style=filled;' + LineEnding +
+      '    fontsize = 20;' + LineEnding +
+      '$content$' + LineEnding +
+      '  }' + LineEnding;
+
+    {DotClass =
+      '    subgraph cluster_$Name$ {' + LineEnding +
+      '      color=white;' + LineEnding +
+      '      label = "$Name$";' + LineEnding +
+      '      style=filled;' + LineEnding +
+      '      fontsize = 20;' + LineEnding +
+      //'$content$' + LineEnding +
+      '    }' + LineEnding;}
+      DotClass =
+        '    $Name$' + LineEnding;
+
+    DotTypeDep =
+      '    $Type1$ -> $Type2' + LineEnding;
+
 
   var
     {Code tool}
     Tool: TCodeTool;
     GlobalRefContext: TJsonNode = nil;
     UnitDict: specialize TObjectDictionary < String, TJsonNode > = nil;
+    DotFileMain: String = '';
 
 
 implementation
@@ -441,6 +478,16 @@ begin
     ParsePascalUnit( FileName, OutFile );
 end;
 
+function PrettyPrint( AJSON: String ): String;
+var
+  json: TJSONData;
+begin
+  json:= GetJSON( AJSON );
+  Result:= json.FormatJSON();
+  json.Free;
+end;
+
+
 
 procedure ParsePascalUnit( FileName: String; OutFile: String );
 type
@@ -539,7 +586,7 @@ begin
     WriteLn( OutFile + '.unit.json' );
     WriteLn( 'Uses: ' + UnitJSON.Child( 'Uses' ).AsJson );
     F:= TFileStream.Create( OutFile + '.unit.json', fmCreate );
-    s:= UnitJSON.AsJson;
+    s:= PrettyPrint( UnitJSON.AsJson );
     F.Write( s[ 1 ], Length( s ));
   finally
     F.Free;
@@ -874,6 +921,89 @@ begin
   xml.Free;
 end;
 
+function ReplaceByObj( S: String; Obj: TJsonNode; const FreeObject: Boolean = False ): String;
+var
+  i: Integer;
+begin
+  Result:= S;
+  for i:= 0 to Obj.Count - 1 do
+    if ( Obj.Child( i ).Kind in [ nkArray, nkObject ]) then
+      Result:= Result.Replace( '$' + Obj.Child( i ).Name + '$', Obj.Child( i ).AsJSON )
+    else
+      Result:= Result.Replace( '$' + Obj.Child( i ).Name + '$', Obj.Child( i ).AsString );
+  if ( FreeObject ) then
+    Obj.Free;
+end;
+
+function IterateOver( Obj: TJsonNode; Template: String ): String;
+var
+  i: Integer;
+begin
+  Result:= '';
+  if ( Assigned( Obj )) then
+    for i:= 0 to Obj.Count - 1 do
+      if ( Obj.Child( i ).Kind = nkObject ) then
+        Result+= ReplaceByObj( Template, ( Obj.Child( i )));
+end;
+
+function GetJSON( S: String ): TJsonNode;
+begin
+  Result:= TJsonNode.Create;
+  Result.Parse( S );
+end;
+
+procedure MakeDotFile( OutFile: String );
+var
+  UnitJSON: TJsonNode;
+
+  function ParseTypeDep( AType1: String; ADep: TJsonNode ): String;
+  var
+    TypeJSON: TJsonNode;
+    AType2: String;
+  begin
+    Result:= '';
+    for TypeJSON in ADep do begin
+      AType2:= TypeJSON.Child( 'Name' ).AsString;
+      Result+= AType1 + ' -> ' + AType2 + LineEnding;
+    end;
+  end;
+
+  function ParseTypes: String;
+  var
+    TypeJSON, NewJSON, Dep: TJsonNode;
+  begin
+    Result:= '';
+    for TypeJSON in UnitJSON.Child( 'Types' ) do begin
+      NewJSON:= TJsonNode.Create;
+      NewJSON.Add( 'Name', TypeJSON.Name );
+      //NewJSON.Add( 'content', ParseTypes );
+      Result+= ReplaceByObj( DotClass, NewJSON );
+      Dep:= TypeJSON.Child( 'TypeDep' );
+      if ( Assigned( Dep )) then
+        Result+= ParseTypeDep( TypeJSON.Name, Dep );
+      NewJSON.Free;
+    end;
+  end;
+
+var
+  NewJSON: TJsonNode;
+  DotFile: String = '';
+  F: TStringList;
+
+begin
+  for UnitJSON in UnitDict.Values do begin
+    NewJSON:= TJsonNode.Create;
+    NewJSON.Add( 'CleanName', ReplaceStr( UnitJSON.Child( 'Name' ).AsString, '.', '_' ));
+    NewJSON.Add( 'Name', UnitJSON.Child( 'Name' ).AsString );
+    NewJSON.Add( 'content', ParseTypes );
+    DotFile+= ReplaceByObj( DotUnit, NewJSON );
+    NewJSON.Free;
+  end;
+  F:= TStringList.Create;
+  F.Text:= ReplaceStr( DotGraph, '$content$', DotFile );
+  F.SaveToFile( OutFile );
+  F.Free;
+end;
 
 end.
 

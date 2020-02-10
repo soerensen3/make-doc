@@ -3,40 +3,41 @@
   <ProjectSession>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="48">
+    <Units Count="49">
       <Unit0>
         <Filename Value="p3dmakedoc.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="89"/>
-        <CursorPos X="28" Y="106"/>
+        <TopLine Value="101"/>
+        <CursorPos X="37" Y="121"/>
         <UsageCount Value="209"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="p3dparsepascal.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="476"/>
-        <CursorPos Y="511"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="868"/>
+        <CursorPos X="42" Y="892"/>
         <UsageCount Value="209"/>
         <Loaded Value="True"/>
       </Unit1>
       <Unit2>
         <Filename Value="p3dparsedoc.pas"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="230"/>
-        <CursorPos X="18" Y="246"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="267"/>
+        <CursorPos Y="120"/>
         <UsageCount Value="203"/>
+        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="p3dparsepascal.inc"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="68"/>
-        <CursorPos Y="88"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="70"/>
+        <CursorPos X="36" Y="78"/>
         <UsageCount Value="326"/>
         <Loaded Value="True"/>
       </Unit3>
@@ -44,8 +45,8 @@
         <Filename Value="JsonTools/jsontools.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="JsonTools"/>
-        <TopLine Value="780"/>
-        <CursorPos Y="812"/>
+        <TopLine Value="634"/>
+        <CursorPos Y="654"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit4>
@@ -53,460 +54,451 @@
         <Filename Value="p3dgendep.pas"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="12"/>
-        <UsageCount Value="198"/>
+        <UsageCount Value="192"/>
       </Unit5>
       <Unit6>
         <Filename Value="../../codetoolstest/parsepascal.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="133"/>
         <CursorPos Y="144"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="14"/>
       </Unit6>
       <Unit7>
         <Filename Value="../../codetoolstest/highlighthtml.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="351"/>
         <CursorPos X="60" Y="370"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="14"/>
       </Unit7>
       <Unit8>
         <Filename Value="../../codetoolstest/makedoc.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="44"/>
         <CursorPos X="44" Y="53"/>
-        <UsageCount Value="20"/>
+        <UsageCount Value="14"/>
       </Unit8>
       <Unit9>
-        <Filename Value="../../lazarus/components/codetools/codetree.pas"/>
-        <UnitName Value="CodeTree"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="25" Y="660"/>
-        <UsageCount Value="3"/>
-      </Unit9>
-      <Unit10>
         <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/pascalreadertool.pas"/>
         <UnitName Value="PascalReaderTool"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="113"/>
         <CursorPos X="14" Y="147"/>
-        <UsageCount Value="54"/>
-      </Unit10>
-      <Unit11>
+        <UsageCount Value="48"/>
+      </Unit9>
+      <Unit10>
         <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/codetree.pas"/>
         <UnitName Value="CodeTree"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="117"/>
         <CursorPos X="3" Y="135"/>
-        <UsageCount Value="74"/>
-      </Unit11>
-      <Unit12>
+        <UsageCount Value="68"/>
+      </Unit10>
+      <Unit11>
         <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/customcodetool.pas"/>
         <UnitName Value="CustomCodeTool"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="2712"/>
         <CursorPos X="85" Y="2717"/>
-        <UsageCount Value="74"/>
-      </Unit12>
-      <Unit13>
+        <UsageCount Value="68"/>
+      </Unit11>
+      <Unit12>
         <Filename Value="p3dparsepascal (old).pas"/>
-        <EditorIndex Value="29"/>
+        <EditorIndex Value="17"/>
         <TopLine Value="92"/>
         <CursorPos X="21" Y="127"/>
         <UsageCount Value="117"/>
         <Loaded Value="True"/>
-      </Unit13>
-      <Unit14>
+      </Unit12>
+      <Unit13>
         <Filename Value="p3dparsedoc (old).pas"/>
-        <EditorIndex Value="28"/>
+        <EditorIndex Value="16"/>
         <TopLine Value="628"/>
         <CursorPos X="42" Y="648"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
-      </Unit14>
-      <Unit15>
+      </Unit13>
+      <Unit14>
         <Filename Value="../pascal3d/src/pascal3d.core.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="112"/>
         <CursorPos X="3" Y="17"/>
-        <UsageCount Value="69"/>
-      </Unit15>
-      <Unit16>
+        <UsageCount Value="63"/>
+      </Unit14>
+      <Unit15>
         <Filename Value="../pascal3d/src/pascal3d.core/p3dshadernodes_markdown.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="29" Y="22"/>
-        <UsageCount Value="69"/>
-      </Unit16>
-      <Unit17>
+        <UsageCount Value="63"/>
+      </Unit15>
+      <Unit16>
         <Filename Value="../markdown/pascal3d.markdown.pas"/>
-        <EditorIndex Value="34"/>
+        <EditorIndex Value="18"/>
         <TopLine Value="17"/>
         <CursorPos X="73" Y="17"/>
         <UsageCount Value="115"/>
         <Loaded Value="True"/>
-      </Unit17>
-      <Unit18>
+      </Unit16>
+      <Unit17>
         <Filename Value="../math3d/p3dmath.pas"/>
         <UnitName Value="p3dMath"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="7" Y="23"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="19"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="../pascal3d/src/p3d.utils_lib.inc"/>
+        <EditorIndex Value="14"/>
+        <UsageCount Value="102"/>
+        <Loaded Value="True"/>
       </Unit18>
       <Unit19>
-        <Filename Value="../pascal3d/src/p3d.utils_lib.inc"/>
-        <EditorIndex Value="32"/>
-        <UsageCount Value="79"/>
-        <Loaded Value="True"/>
-      </Unit19>
-      <Unit20>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/examples/findusedunitreferences.lpr"/>
         <UnitName Value="FindUsedUnitReferences"/>
-        <EditorIndex Value="18"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="51"/>
         <CursorPos X="16" Y="62"/>
-        <UsageCount Value="121"/>
-        <Loaded Value="True"/>
-      </Unit20>
-      <Unit21>
+        <UsageCount Value="115"/>
+      </Unit19>
+      <Unit20>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
         <UnitName Value="CodeToolManager"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="36"/>
         <CursorPos X="3" Y="59"/>
-        <UsageCount Value="121"/>
-        <Loaded Value="True"/>
-      </Unit21>
-      <Unit22>
+        <UsageCount Value="115"/>
+      </Unit20>
+      <Unit21>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codecache.pas"/>
         <UnitName Value="CodeCache"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="210"/>
         <CursorPos X="22" Y="234"/>
-        <UsageCount Value="121"/>
-        <Loaded Value="True"/>
-      </Unit22>
-      <Unit23>
+        <UsageCount Value="115"/>
+      </Unit21>
+      <Unit22>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
         <UnitName Value="PascalReaderTool"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="137"/>
         <CursorPos X="40" Y="154"/>
-        <UsageCount Value="121"/>
-        <Loaded Value="True"/>
-      </Unit23>
-      <Unit24>
+        <UsageCount Value="115"/>
+      </Unit22>
+      <Unit23>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/basiccodetools.pas"/>
         <UnitName Value="BasicCodeTools"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="87"/>
         <CursorPos X="10" Y="110"/>
-        <UsageCount Value="121"/>
-        <Loaded Value="True"/>
-      </Unit24>
-      <Unit25>
+        <UsageCount Value="115"/>
+      </Unit23>
+      <Unit24>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/finddeclarationtool.pas"/>
         <UnitName Value="FindDeclarationTool"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="882"/>
         <CursorPos X="14" Y="903"/>
-        <UsageCount Value="121"/>
-        <Loaded Value="True"/>
-      </Unit25>
-      <Unit26>
+        <UsageCount Value="115"/>
+      </Unit24>
+      <Unit25>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/customcodetool.pas"/>
         <UnitName Value="CustomCodeTool"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="2475"/>
         <CursorPos X="33" Y="2486"/>
-        <UsageCount Value="105"/>
-        <Loaded Value="True"/>
-      </Unit26>
-      <Unit27>
+        <UsageCount Value="99"/>
+      </Unit25>
+      <Unit26>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codetoolsconfig.pas"/>
         <UnitName Value="CodeToolsConfig"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="105"/>
         <CursorPos X="15" Y="127"/>
-        <UsageCount Value="105"/>
-        <Loaded Value="True"/>
-      </Unit27>
-      <Unit28>
+        <UsageCount Value="99"/>
+      </Unit26>
+      <Unit27>
         <Filename Value="../../../../fpcupdeluxe/fpcsrc/rtl/objpas/sysutils/sysutilh.inc"/>
-        <EditorIndex Value="35"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="4" Y="107"/>
-        <UsageCount Value="103"/>
-        <Loaded Value="True"/>
-      </Unit28>
-      <Unit29>
+        <UsageCount Value="97"/>
+      </Unit27>
+      <Unit28>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/definetemplates.pas"/>
         <UnitName Value="DefineTemplates"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="9864"/>
         <CursorPos Y="9896"/>
-        <UsageCount Value="103"/>
-        <Loaded Value="True"/>
-      </Unit29>
-      <Unit30>
+        <UsageCount Value="97"/>
+      </Unit28>
+      <Unit29>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codetree.pas"/>
         <UnitName Value="CodeTree"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="102"/>
         <CursorPos X="3" Y="126"/>
-        <UsageCount Value="100"/>
+        <UsageCount Value="94"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="../pascal3d/src/pascal3d.base/p3d.core.scene.inc"/>
+        <EditorIndex Value="9"/>
+        <CursorPos X="45" Y="24"/>
+        <UsageCount Value="103"/>
         <Loaded Value="True"/>
       </Unit30>
       <Unit31>
-        <Filename Value="../pascal3d/src/pascal3d.base/p3d.core.scene.inc"/>
-        <EditorIndex Value="25"/>
-        <CursorPos X="45" Y="24"/>
-        <UsageCount Value="80"/>
+        <Filename Value="../pascal3d/src/p3d.utils.pas"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="16"/>
+        <CursorPos X="46" Y="34"/>
+        <UsageCount Value="102"/>
         <Loaded Value="True"/>
       </Unit31>
       <Unit32>
-        <Filename Value="../pascal3d/src/p3d.utils.pas"/>
-        <EditorIndex Value="30"/>
-        <TopLine Value="16"/>
-        <CursorPos X="46" Y="34"/>
-        <UsageCount Value="79"/>
+        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.generics.inc"/>
+        <EditorIndex Value="13"/>
+        <CursorPos X="16" Y="7"/>
+        <UsageCount Value="102"/>
         <Loaded Value="True"/>
       </Unit32>
       <Unit33>
-        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.generics.inc"/>
-        <EditorIndex Value="31"/>
-        <CursorPos X="16" Y="7"/>
-        <UsageCount Value="79"/>
+        <Filename Value="../pascal3d/src/p3d.events.pas"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="10"/>
+        <CursorPos X="21" Y="28"/>
+        <UsageCount Value="102"/>
         <Loaded Value="True"/>
       </Unit33>
       <Unit34>
-        <Filename Value="../pascal3d/src/p3d.events.pas"/>
-        <EditorIndex Value="26"/>
-        <TopLine Value="10"/>
-        <CursorPos X="21" Y="28"/>
-        <UsageCount Value="79"/>
+        <Filename Value="../pascal3d/src/pascal3d.events/p3d.events.logger.inc"/>
+        <EditorIndex Value="11"/>
+        <UsageCount Value="102"/>
         <Loaded Value="True"/>
       </Unit34>
       <Unit35>
-        <Filename Value="../pascal3d/src/pascal3d.events/p3d.events.logger.inc"/>
-        <EditorIndex Value="27"/>
-        <UsageCount Value="79"/>
+        <Filename Value="../pascal3d/src/pascal3d.core/p3d.core.arrays.inc"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="19"/>
+        <CursorPos Y="27"/>
+        <UsageCount Value="101"/>
         <Loaded Value="True"/>
       </Unit35>
       <Unit36>
-        <Filename Value="../pascal3d/src/pascal3d.core/p3d.core.arrays.inc"/>
-        <EditorIndex Value="22"/>
-        <TopLine Value="19"/>
-        <CursorPos Y="27"/>
-        <UsageCount Value="78"/>
+        <Filename Value="../pascal3d/src/p3d.core_lib.inc"/>
+        <EditorIndex Value="8"/>
+        <UsageCount Value="101"/>
         <Loaded Value="True"/>
       </Unit36>
       <Unit37>
-        <Filename Value="../pascal3d/src/p3d.core_lib.inc"/>
-        <EditorIndex Value="24"/>
-        <UsageCount Value="78"/>
+        <Filename Value="../pascal3d/src/pascal3d.core/p3d.core.buffers.inc"/>
+        <EditorIndex Value="7"/>
+        <UsageCount Value="101"/>
         <Loaded Value="True"/>
       </Unit37>
       <Unit38>
-        <Filename Value="../pascal3d/src/pascal3d.core/p3d.core.buffers.inc"/>
-        <EditorIndex Value="23"/>
-        <UsageCount Value="78"/>
+        <Filename Value="../pascal3d/src/p3d.core.pas"/>
+        <EditorIndex Value="5"/>
+        <UsageCount Value="101"/>
         <Loaded Value="True"/>
       </Unit38>
       <Unit39>
-        <Filename Value="../pascal3d/src/p3d.core.pas"/>
-        <EditorIndex Value="21"/>
-        <UsageCount Value="78"/>
-        <Loaded Value="True"/>
-      </Unit39>
-      <Unit40>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/pascalparsertool.pas"/>
         <UnitName Value="PascalParserTool"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="3758"/>
         <CursorPos Y="3777"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="71"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.propaccess.inc"/>
+        <EditorIndex Value="15"/>
+        <TopLine Value="151"/>
+        <CursorPos X="9" Y="174"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
       </Unit40>
       <Unit41>
-        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.propaccess.inc"/>
-        <EditorIndex Value="33"/>
-        <TopLine Value="151"/>
-        <CursorPos X="9" Y="174"/>
-        <UsageCount Value="77"/>
-        <Loaded Value="True"/>
-      </Unit41>
-      <Unit42>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/keywordfunclists.pas"/>
         <UnitName Value="KeywordFuncLists"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="614"/>
         <CursorPos Y="633"/>
-        <UsageCount Value="12"/>
-        <Loaded Value="True"/>
-      </Unit42>
-      <Unit43>
+        <UsageCount Value="6"/>
+      </Unit41>
+      <Unit42>
         <Filename Value="../../../../fpcupdeluxe/fpcsrc/packages/rtl-generics/src/inc/generics.dictionariesh.inc"/>
-        <EditorIndex Value="19"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="596"/>
         <CursorPos X="49" Y="617"/>
-        <UsageCount Value="12"/>
-        <Loaded Value="True"/>
-      </Unit43>
-      <Unit44>
+        <UsageCount Value="6"/>
+      </Unit42>
+      <Unit43>
         <Filename Value="../../../../fpcupdeluxe/fpcsrc/packages/rtl-generics/src/inc/generics.dictionaries.inc"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="349"/>
         <CursorPos X="56" Y="355"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit44>
-      <Unit45>
+        <UsageCount Value="5"/>
+      </Unit43>
+      <Unit44>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codecompletiontool.pas"/>
         <UnitName Value="CodeCompletionTool"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="418"/>
         <CursorPos X="23" Y="158"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit45>
-      <Unit46>
+        <UsageCount Value="5"/>
+      </Unit44>
+      <Unit45>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/stdcodetools.pas"/>
         <UnitName Value="StdCodeTools"/>
-        <EditorIndex Value="17"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="125"/>
         <CursorPos X="14" Y="142"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit46>
-      <Unit47>
+        <UsageCount Value="5"/>
+      </Unit45>
+      <Unit46>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/lazutils/lazfileutils.pas"/>
         <UnitName Value="LazFileUtils"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="25" Y="43"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="5"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/objpas/sysutils/syshelph.inc"/>
+        <EditorIndex Value="19"/>
+        <TopLine Value="137"/>
+        <CursorPos X="14" Y="149"/>
+        <UsageCount Value="10"/>
         <Loaded Value="True"/>
       </Unit47>
+      <Unit48>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/objpas/sysutils/syshelp.inc"/>
+        <EditorIndex Value="20"/>
+        <TopLine Value="1064"/>
+        <CursorPos X="3" Y="1066"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit48>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="524" TopLine="497"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="507" TopLine="484"/>
       </Position1>
       <Position2>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="85" Column="59" TopLine="64"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="509" TopLine="486"/>
       </Position2>
       <Position3>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="86" TopLine="64"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="510" TopLine="488"/>
       </Position3>
       <Position4>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="84" TopLine="64"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="516" TopLine="503"/>
       </Position4>
       <Position5>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="86" Column="34" TopLine="64"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="521" TopLine="503"/>
       </Position5>
       <Position6>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="504" TopLine="493"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="522" TopLine="503"/>
       </Position6>
       <Position7>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="505" TopLine="493"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="494" TopLine="480"/>
       </Position7>
       <Position8>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="491" TopLine="478"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="496" TopLine="480"/>
       </Position8>
       <Position9>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="441" TopLine="419"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="497" TopLine="480"/>
       </Position9>
       <Position10>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="506" Column="32" TopLine="483"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="506" TopLine="483"/>
       </Position10>
       <Position11>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="510" Column="18" TopLine="483"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="507" TopLine="484"/>
       </Position11>
       <Position12>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="506" TopLine="483"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="509" TopLine="486"/>
       </Position12>
       <Position13>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="510" TopLine="483"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="510" TopLine="488"/>
       </Position13>
       <Position14>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="86" Column="17" TopLine="55"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="516" TopLine="503"/>
       </Position14>
       <Position15>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="80" Column="37" TopLine="68"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="521" TopLine="503"/>
       </Position15>
       <Position16>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="506" TopLine="483"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="522" TopLine="503"/>
       </Position16>
       <Position17>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="86" TopLine="68"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="524" TopLine="503"/>
       </Position17>
       <Position18>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="491" Column="21" TopLine="472"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="526" TopLine="504"/>
       </Position18>
       <Position19>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="86" TopLine="68"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="527" TopLine="505"/>
       </Position19>
       <Position20>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="74" Column="14" TopLine="68"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="532" TopLine="519"/>
       </Position20>
       <Position21>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="510" Column="22" TopLine="496"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="647" TopLine="634"/>
       </Position21>
       <Position22>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="506" TopLine="484"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="648" TopLine="634"/>
       </Position22>
       <Position23>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="86" Column="31" TopLine="68"/>
+        <Filename Value="JsonTools/jsontools.pas"/>
+        <Caret Line="654" TopLine="634"/>
       </Position23>
       <Position24>
         <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="88" Column="49" TopLine="68"/>
+        <Caret Line="164" TopLine="146"/>
       </Position24>
       <Position25>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="542" Column="57" TopLine="517"/>
+        <Filename Value="p3dparsepascal.inc"/>
+        <Caret Line="168" Column="33" TopLine="145"/>
       </Position25>
       <Position26>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="503" Column="6" TopLine="481"/>
+        <Filename Value="p3dparsepascal.inc"/>
+        <Caret Line="62" Column="12" TopLine="47"/>
       </Position26>
       <Position27>
         <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="450" Column="3" TopLine="527"/>
+        <Caret Line="971" Column="35" TopLine="953"/>
       </Position27>
       <Position28>
         <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="698" Column="39" TopLine="669"/>
+        <Caret Line="963" Column="16" TopLine="949"/>
       </Position28>
       <Position29>
         <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="493" Column="5" TopLine="477"/>
+        <Caret Line="965" Column="7" TopLine="949"/>
       </Position29>
       <Position30>
         <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="511" TopLine="476"/>
+        <Caret Line="892" Column="42" TopLine="868"/>
       </Position30>
     </JumpHistory>
     <RunParams>
@@ -515,27 +507,29 @@
     </RunParams>
     <HistoryLists Count="3">
       <List0 Name="LaunchingApplication" Type="File" Count="3">
+        <Item1 Value="/usr/bin/xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
         <Item2 Value="/usr/bin/gnome-terminal -t &apos;Lazarus Run Output&apos; -e &apos;$(LazarusDir)/tools/runwait.sh $(TargetCmdLine)&apos;"/>
         <Item3 Value="/usr/bin/konsole -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
       </List0>
-      <List1 Name="CommandLineParameters" Count="17">
-        <Item1 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
-        <Item2 Value="/home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item3 Value="parse tests/test2generic.lpr -o tests/out/"/>
-        <Item4 Value="parse tests/test1class.lpr -o tests/out/"/>
-        <Item5 Value="parse p3dmakedoc.lpi -o tests/out/"/>
-        <Item6 Value="parse /home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
-        <Item7 Value="parse /home/johannes/Documents/custom/p3d/pascal3d_math/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item8 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d_ui.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item9 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item10 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item11 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir se /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item12 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item13 Value="/home/johannes/Documents/custom/p3d/generics/pascal3d_generics.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item14 Value="/home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item15 Value="/home/johannes/Documents/custom/p3d/pascal3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item16 Value="/home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
-        <Item17 Value="/home/johannes/Documents/dev/Lazarus/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/dev/Lazarus/p3d/makedoc/outdir/ /home/johannes/Documents/dev/Lazarus/p3d/makedoc/outdir/"/>
+      <List1 Name="CommandLineParameters" Count="18">
+        <Item1 Value="parse ../pascal3d/src/pascal3d.lpk -o outdir/"/>
+        <Item2 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+        <Item3 Value="/home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
+        <Item4 Value="parse tests/test2generic.lpr -o tests/out/"/>
+        <Item5 Value="parse tests/test1class.lpr -o tests/out/"/>
+        <Item6 Value="parse p3dmakedoc.lpi -o tests/out/"/>
+        <Item7 Value="parse /home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+        <Item8 Value="parse /home/johannes/Documents/custom/p3d/pascal3d_math/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item9 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d_ui.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item10 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item11 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item12 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir se /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item13 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
+        <Item14 Value="/home/johannes/Documents/custom/p3d/generics/pascal3d_generics.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
+        <Item15 Value="/home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
+        <Item16 Value="/home/johannes/Documents/custom/p3d/pascal3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
+        <Item17 Value="/home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+        <Item18 Value="/home/johannes/Documents/dev/Lazarus/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/dev/Lazarus/p3d/makedoc/outdir/ /home/johannes/Documents/dev/Lazarus/p3d/makedoc/outdir/"/>
       </List1>
       <List2 Name="WorkingDirectory" Type="File" Count="1"/>
     </HistoryLists>

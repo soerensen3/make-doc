@@ -20,13 +20,13 @@
     </PublishOptions>
     <RunParams>
       <local>
-        <CommandLineParams Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+        <CommandLineParams Value="parse ../pascal3d/src/pascal3d.lpk -o outdir/"/>
       </local>
       <FormatVersion Value="2"/>
       <Modes Count="1">
         <Mode0 Name="default">
           <local>
-            <CommandLineParams Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+            <CommandLineParams Value="parse ../pascal3d/src/pascal3d.lpk -o outdir/"/>
           </local>
         </Mode0>
       </Modes>

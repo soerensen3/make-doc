@@ -127,7 +127,7 @@
     begin
       Result:= False;
       for i:= 0 to Node.Count - 1 do
-        if ( Node.Child( i ).AsString = AName ) then begin
+        if ( Node.Child( i ).AsJson = AName ) then begin
           Result:= True;
           break;
         end;
@@ -146,16 +146,28 @@
     UnitContext:= ExtractFileName( OutFile );
     tpcont:= FindType( TypeName, Context );
     if ( Assigned( tpcont )) then begin
-      ContextS:= UnitContext + WalkJSON( tpcont );
+      ContextS:= WalkJSON( tpcont );
+      CreateNode( Result, 'SourceFile', UnitContext ).AsString;
       CreateNode( Result, 'Context', ContextS ).AsString;
-      if ( not Assigned( Context )) then
-        exit;
-      dep:= Context.Child( 'TypeDep' );
-      if ( not Assigned( dep )) then
-        dep:= Context.Add( 'TypeDep', nkArray );
-      if ( not ArrayContains( ContextS, dep )) then
-        dep.Add( '', ContextS );
     end;
+
+    if ( not Assigned( Context )) then
+      exit;
+    dep:= Context.Child( 'TypeDep' );
+    if ( not Assigned( dep )) then
+      dep:= Context.Add( 'TypeDep', nkArray );
+    ContextS:= Result.AsJson;
+    if ( Parent.Kind = nkObject ) then
+      ContextS:= ContextS.Remove( 0, Length( '"Type":' ));
+    if ( not ArrayContains( ContextS, dep )) then
+      try
+        dep.Add( '', nkObject ).Parse( ContextS );
+
+      except
+        on E: Exception do
+          WriteLn( ContextS );
+      end;
+
     //CreateNode( Result, 'Test', WalkJSON( Context ));
   end;
 

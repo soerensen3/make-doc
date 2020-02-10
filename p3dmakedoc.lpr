@@ -118,6 +118,7 @@ begin
             end;}
         end;
       end;
+      MakeDotFile( OutFile + '.gv' );
     end;
   finally
     for i:= 0 to High( Commands ) do
