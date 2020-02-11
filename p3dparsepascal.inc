@@ -63,14 +63,6 @@
   var
     UnitContext: String = '';
 
-    function WalkJSON( ThisParent: TNode ): String;
-    begin
-      if ( Assigned( ThisParent ) and ( ThisParent <> ThisParent.Root )) then
-        Result:= WalkJSON( ThisParent.Parent ) + '.' + ThisParent.Name
-      else
-        Result:= '';
-    end;
-
     function ParseUnits( Name: String ): TNode;
     var
       Units: TJsonNode;
@@ -121,6 +113,18 @@
         Result:= FindType( Name, Context.Parent );
     end;
 
+    procedure AssertUnknownTypeNode( AName: String );
+    var
+      Types, ThisType: TJsonNode;
+    begin
+      Types:= UnitUnknown.Child( 'Types' );
+      if ( not Assigned( Types )) then
+        Types:= UnitUnknown.Add( 'Types' );
+      ThisType:= Types.Child( AName );
+      if ( not Assigned( ThisType )) then
+        ThisType:= Types.Add( AName );
+    end;
+
     function ArrayContains( AName: String; Node: TNode ): Boolean;
     var
       i: Integer;
@@ -149,14 +153,27 @@
       ContextS:= WalkJSON( tpcont );
       CreateNode( Result, 'SourceFile', UnitContext ).AsString;
       CreateNode( Result, 'Context', ContextS ).AsString;
+    end else begin
+      ContextS:= '.Types.' + TypeName;
+      CreateNode( Result, 'Context', ContextS ).AsString;
+      if ( AnsiIndexStr( lowercase( TypeName ), BuitinTypes ) = -1 ) then begin
+        CreateNode( Result, 'SourceFile', 'Unknown' ).AsString;
+        AssertUnknownTypeNode( TypeName );
+      end else begin
+        CreateNode( Result, 'SourceFile', 'System' ).AsString;
+        exit;
+      end;
     end;
 
+    // Dependency
     if ( not Assigned( Context )) then
+      exit;
+    ContextS:= Result.AsJson;
+    if ( ContextS.Contains( 'GenericParams' )) then
       exit;
     dep:= Context.Child( 'TypeDep' );
     if ( not Assigned( dep )) then
       dep:= Context.Add( 'TypeDep', nkArray );
-    ContextS:= Result.AsJson;
     if ( Parent.Kind = nkObject ) then
       ContextS:= ContextS.Remove( 0, Length( '"Type":' ));
     if ( not ArrayContains( ContextS, dep )) then
@@ -175,7 +192,7 @@
   var
     Identifier: String;
   begin
-    Identifier:= Tool.ExtractDefinitionName( Node );
+    Identifier:= Tool.ExtractDefinitionName( Tool.FindTypeNodeOfDefinition( Node ));
     CreateTypeNode( Parent, Identifier, Context );
   end;
 
@@ -219,36 +236,17 @@
         Child:= Child.NextBrother;
       end;
       if ( Assigned( Child ) and ( Child.Desc = ctnIdentifier )) then
-        ExtractTypeReference( Parent, Tool.FindTypeNodeOfDefinition( Child ), Parent.Parent );
+        ExtractTypeReference( Parent, Tool.FindTypeNodeOfDefinition( Child ), GlobalRefContext );
     end;
   end;
-{
-  procedure ExtractType( Parent: TNode; Node: TCodeTreeNode );
-  var
-    Child: TCodeTreeNode;
-  begin
-    Child:= Node.FirstChild;
-    Parent:= CreateNode( Parent, Tool.ExtractDefinitionName( Node ));
-    if ( Node.Desc = ctnGenericType ) then
-      begin
-        Child:= Child.NextBrother;
-        ExtractParams( Parent, Child );
-        Child:= Child.NextBrother;
-      end;
-    if ( Assigned( Child )) then
-      begin
-        if ( Child.Desc = ctnParameterList ) then
-          ExtractParams( Parent, Child );
-        CreateNode( Parent, 'cttype', Child.DescAsString );
-        TypeDefinition( Parent, Child );
-      end;
-  end;}
+
+  procedure ExtractType( Parent: TNode; Node: TCodeTreeNode ); forward;
 
   // Parse a variable' name and type
   function ExtractVar( Parent: TNode; Node: TCodeTreeNode ): TNode;
   begin
     Result:= CreateNode( Parent, Tool.ExtractDefinitionName( Node ));
-    ParseTypeReference( Result, Tool.FindTypeNodeOfDefinition( Node ));
+    ExtractType( Result, Tool.FindTypeNodeOfDefinition( Node ));
     GetSourceParams( Result, Node );
   end;
 
@@ -296,21 +294,16 @@
     begin
       while ( Tool.CurPos.Flag <> cafSemicolon ) do begin // parse until the semicolon is reached
         Tool.ReadNextAtom;
-        if ( Tool.UpAtomIs( 'READ' )) then
-          begin
-            Tool.ReadNextAtom;
-            CreateNode( Parent, 'read', Tool.GetAtom );
-          end
-        else if ( Tool.UpAtomIs( 'WRITE' )) then
-          begin
-            Tool.ReadNextAtom;
-            CreateNode( Parent, 'write', Tool.GetAtom );
-          end
-        else if ( Tool.UpAtomIs( 'INDEX' )) then
-          begin
-            Tool.ReadNextAtom;
-            CreateNode( Parent, 'index', Tool.GetAtom );
-          end;
+        if ( Tool.UpAtomIs( 'READ' )) then begin
+          Tool.ReadNextAtom;
+          CreateNode( Parent, 'read', Tool.GetAtom );
+        end else if ( Tool.UpAtomIs( 'WRITE' )) then begin
+          Tool.ReadNextAtom;
+          CreateNode( Parent, 'write', Tool.GetAtom );
+        end else if ( Tool.UpAtomIs( 'INDEX' )) then begin
+          Tool.ReadNextAtom;
+          CreateNode( Parent, 'index', Tool.GetAtom );
+        end;
       end;
     end;
 
@@ -396,49 +389,6 @@
     GlobalRefContext:= OldGlobalRef;
   end;
 
-  procedure ParseClass( Parent: TNode; Node: TCodeTreeNode );
-  var
-    Child: TCodeTreeNode;
-    SPrivate: TNode = nil;
-    SProtected: TNode = nil;
-    SPublic: TNode = nil;
-    SPublished: TNode = nil;
-    SRequired: TNode = nil;
-    SOptional: TNode = nil;
-    SParent: TNode = nil;
-    OldGlobalRef: TJsonNode;
-
-  begin
-    {heritage:= FindNodeClassParent( Node );
-    if ( Assigned( heritage )) then
-      LoopSimple( CreateNode( Parent, 'parent' ), heritage, @TypeDefinition );}
-    OldGlobalRef:= GlobalRefContext;
-    GlobalRefContext:= Parent;
-
-
-    Child:= Node.FirstChild;
-    CreateNode( Parent, 'NodeType', NodeDescriptionAsString( Node.Desc ));
-
-    while ( Assigned( Child )) do begin
-      case Child.Desc of
-        ctnClassExternal: ;
-        ctnClassAbstract: ;
-        ctnClassInheritance: LoopSimple( AssertSection( Parent, SParent, 'Parent' ), Child, @ParseTypeReference );
-        ctnClassPrivate: LoopClassMembers( AssertSection( Parent, SPrivate, 'Private', nkObject ), Child );
-        ctnClassProtected: LoopClassMembers( AssertSection( Parent, SProtected, 'Protected', nkObject ), Child );
-        ctnClassPublic: LoopClassMembers( AssertSection( Parent, SPublic, 'Public', nkObject ), Child );
-        ctnClassPublished: LoopClassMembers( AssertSection( Parent, SPublished, 'Published', nkObject ), Child );
-        ctnClassRequired: LoopClassMembers( AssertSection( Parent, SRequired, 'Required', nkObject ), Child );
-        ctnClassOptional: LoopClassMembers( AssertSection( Parent, SOptional, 'Optional', nkObject ), Child );
-      else
-        NotSupported( Parent, Child );
-      end;
-      Child:= Child.NextBrother;
-    end;
-
-    GlobalRefContext:= OldGlobalRef;
-  end;
-
   procedure ParseEnumeration( Parent: TNode; Node: TCodeTreeNode );
   var
     Child: TCodeTreeNode;
@@ -506,6 +456,8 @@
       NotSupported( Parent, Node ); // Unexpected node type. If this function is called it means there is a bug in this code.
     end;
   end;
+
+  procedure ParseClass( Parent: TNode; Node: TCodeTreeNode ); forward;
 
   procedure ExtractType( Parent: TNode; Node: TCodeTreeNode );
   begin
@@ -576,6 +528,49 @@
     end;
   end;
 
+  procedure ParseClass( Parent: TNode; Node: TCodeTreeNode );
+  var
+    Child: TCodeTreeNode;
+    SPrivate: TNode = nil;
+    SProtected: TNode = nil;
+    SPublic: TNode = nil;
+    SPublished: TNode = nil;
+    SRequired: TNode = nil;
+    SOptional: TNode = nil;
+    SParent: TNode = nil;
+    OldGlobalRef: TJsonNode;
+
+  begin
+    {heritage:= FindNodeClassParent( Node );
+    if ( Assigned( heritage )) then
+      LoopSimple( CreateNode( Parent, 'parent' ), heritage, @TypeDefinition );}
+    OldGlobalRef:= GlobalRefContext;
+    GlobalRefContext:= Parent;
+
+
+    Child:= Node.FirstChild;
+    CreateNode( Parent, 'NodeType', NodeDescriptionAsString( Node.Desc ));
+
+    while ( Assigned( Child )) do begin
+      case Child.Desc of
+        ctnClassExternal: ;
+        ctnClassAbstract: ;
+        ctnClassInheritance: LoopSimple( AssertSection( Parent, SParent, 'Parent' ), Child, @ExtractType );
+        ctnClassPrivate: LoopClassMembers( AssertSection( Parent, SPrivate, 'Private', nkObject ), Child );
+        ctnClassProtected: LoopClassMembers( AssertSection( Parent, SProtected, 'Protected', nkObject ), Child );
+        ctnClassPublic: LoopClassMembers( AssertSection( Parent, SPublic, 'Public', nkObject ), Child );
+        ctnClassPublished: LoopClassMembers( AssertSection( Parent, SPublished, 'Published', nkObject ), Child );
+        ctnClassRequired: LoopClassMembers( AssertSection( Parent, SRequired, 'Required', nkObject ), Child );
+        ctnClassOptional: LoopClassMembers( AssertSection( Parent, SOptional, 'Optional', nkObject ), Child );
+      else
+        NotSupported( Parent, Child );
+      end;
+      Child:= Child.NextBrother;
+    end;
+
+    GlobalRefContext:= OldGlobalRef;
+  end;
+
   // [ Uses Section ]
   // Loop of
   // [ Type Section |
@@ -633,7 +628,7 @@
       case Child.Desc of
         // INTERFACE
         ctnClassGUID: CreateNode( Parent, 'GUID', Tool.ExtractNode( Child, []));
-        ctnClassInheritance: LoopSimple( AssertSection( Parent, SParent, 'Parent' ), Child, @ParseTypeReference );
+        ctnClassInheritance: LoopSimple( AssertSection( Parent, SParent, 'Parent' ), Child, @ExtractType );
 
         // CLASS VISIBILITY SECTION, RECORD OR INTERFACE
         ctnTypeSection: LoopSimple( AssertSection( Parent, STypes, 'Types', nkObject ), Child, @ParseTypeDefinition );

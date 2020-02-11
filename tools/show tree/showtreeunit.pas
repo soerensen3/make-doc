@@ -286,6 +286,16 @@ var
       end;
   end;
 
+  function SyntaxCheck( Code: TCodeBuffer ): String;
+  var
+    Buffer: TCodeBuffer;
+    NewX, NewY, NewTopLine: integer;
+    ErrorMsg: string;
+  begin
+    CodeToolBoss.CheckSyntax( Code, Buffer, NewX, NewY, NewTopLine, ErrorMsg );
+    Result:= Code.Filename + ' (' + NewY.ToString + ', ' + NewX.ToString + '): ' + ErrorMsg;
+  end;
+
 var
   TN: TTreeNode;
   Code: TCodeBuffer;
@@ -298,7 +308,7 @@ begin
     raise Exception.Create( 'Could not load the unit file: '+ FileName );
   Tool:= nil;
   if ( not CodeToolBoss.Explore( Code, Tool, False, True )) then
-    raise Exception.Create( 'The code of the unit file could not be parsed as it contains errors: ' + FileName );
+    raise Exception.Create( 'The code of the unit file could not be parsed as it contains errors: ' + LineEnding + SyntaxCheck( Code ));
 
   if ( not Assigned( Tool )) then
     Tool:= TCodeTool( CodeToolBoss.GetCodeToolForSource( Code, False, False ));

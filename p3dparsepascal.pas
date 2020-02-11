@@ -51,7 +51,7 @@ interface
       '}' + LineEnding;
 
     DotUnit =
-      '  subgraph cluster_$CleanName$ {' + LineEnding +
+      '  subgraph "cluster_$Name$" {' + LineEnding +
       '    color=lightblue;' + LineEnding +
       '    label = "$Name$";' + LineEnding +
       '    style=filled;' + LineEnding +
@@ -68,10 +68,61 @@ interface
       //'$content$' + LineEnding +
       '    }' + LineEnding;}
       DotClass =
-        '    $Name$' + LineEnding;
+        '    "$FullName$" [label="$Name$"]' + LineEnding;
 
     DotTypeDep =
-      '    $Type1$ -> $Type2' + LineEnding;
+      '  $Type1$ -> $Type2$' + LineEnding;
+
+
+  const
+    BuitinTypes: array of String = (
+      'byte',
+      'shortint',
+      'smallint',
+      'word',
+      'integer',
+      'cardinal',
+      'longint',
+      'longword',
+      'int64',
+      'qword',
+      'integer',
+
+      'real',
+      'single',
+      'double',
+      'extended',
+      'comp',
+      'currency',
+
+      'boolean',
+      'bytebool',
+      'wordbool',
+      'longbool',
+
+      'ansichar',
+      'widechar',
+      'pchar',
+      'pwidechar',
+      'string',
+      'shortstring',
+      'ansistring',
+      'unicodestring',
+      'utf8string',
+      'utf16string',
+      'widestring',
+      'pshortstring',
+      'pansistring',
+      'punicodestring',
+      'pwidestring',
+      'string',
+
+      'pointer',
+
+      'tobject',
+      'tpersistent',
+      'tnotifyevent'
+    );
 
 
   var
@@ -79,12 +130,19 @@ interface
     Tool: TCodeTool;
     GlobalRefContext: TJsonNode = nil;
     UnitDict: specialize TObjectDictionary < String, TJsonNode > = nil;
+    UnitUnknown: TJsonNode;
     DotFileMain: String = '';
 
 
 implementation
 
 procedure P3DParsePascalInit;
+  procedure InitUnknown;
+  begin
+    UnitUnknown:= TJsonNode.Create.AsObject;
+    UnitUnknown.Add( 'Name', 'Unknown' );
+  end;
+
 var
   Opts: TCodeToolsOptions;
 begin
@@ -92,13 +150,23 @@ begin
 //  Opts.LoadFromFile( ConfigFilename );
   CodeToolBoss.CompilerDefinesCache.LoadFromFile( ConfigFilename );
   UnitDict:= specialize TObjectDictionary < String, TJsonNode >.Create;
+  InitUnknown;
   //Opts.SaveToFile(ConfigFilename);
 //  Opts.Free;
 end;
 
 procedure P3DParsePascalFinish;
 begin
+  FreeAndNil( UnitUnknown );
   FreeAndNil( UnitDict );
+end;
+
+function WalkJSON( ThisParent: TJsonNode ): String;
+begin
+  if ( Assigned( ThisParent ) and ( ThisParent <> ThisParent.Root )) then
+    Result:= WalkJSON( ThisParent.Parent ) + '.' + ThisParent.Name
+  else
+    Result:= '';
 end;
 
 function TextToHTML(Txt: string): string; //Modified some Code of CodeHelp.pas by Mattias Gaertner
@@ -386,77 +454,6 @@ begin
   end;
 end;
 
-{
-
-function GetPasDocCommentsAsHTML(Tool: TFindDeclarationTool;
-  Node: TCodeTreeNode): string;
-var
-  ListOfPCodeXYPosition: TFPList;
-  i: Integer;
-  CodeXYPos, LastCodeXYPos: PCodeXYPosition;
-  CommentCode: TCodeBuffer;
-  CommentStart: integer;
-  NestedComments: Boolean;
-  CommentStr, LastComment: String;
-
-  procedure AddComment;
-  begin
-    if (( not Assigned( CodeXYPos ) or ( not Assigned( LastCodeXYPos )) or
-        ( CodeXYPos^.Code <> LastCodeXYPos^.Code ) or
-        ( CodeXYPos^.Y - LastCodeXYPos^.Y > 10 ))) then
-      begin
-        // the last comment is at a different position => add a source link
-        if ( LastComment <> '' ) then
-          Result:= Result + Trim( DelChars( DelChars( LastComment, #10 ), #13 )) //TextToHTML(LastComment)
-            +'@br ';
-        LastComment:= Trim( CommentStr );
-      end
-    else
-      begin
-        // these two comments are very near together => combine them
-        if ( LastComment <> '' ) then
-          LastComment += '@br ';
-        LastComment += CommentStr;
-      end;
-    LastCodeXYPos:= CodeXYPos;
-  end;
-
-begin
-  Result:='';
-  if (( not Assigned( Tool )) or ( not Assigned( Node ))) then
-    exit;
-
-  ListOfPCodeXYPosition:= nil;
-  try
-    if ( not Tool.GetPasDocComments( Node, ListOfPCodeXYPosition )) then
-      exit;
-
-    if ( not Assigned( ListOfPCodeXYPosition )) then
-      exit;
-
-    NestedComments:= Tool.Scanner.NestedComments;
-    LastCodeXYPos:= nil;
-    LastComment:= '';
-    for i := 0 to ListOfPCodeXYPosition.Count - 1 do begin
-      CodeXYPos:= PCodeXYPosition( ListOfPCodeXYPosition[ i ]);
-      CommentCode:= CodeXYPos^.Code;
-      CommentCode.LineColToPosition( CodeXYPos^.Y, CodeXYPos^.X, CommentStart );
-      if (( CommentStart < 1 ) or ( CommentStart > CommentCode.SourceLength )) then
-        continue;
-      CommentStr:= ExtractCommentContent( CommentCode.Source,CommentStart,
-                                          NestedComments, True, True, True );
-      AddComment;
-    end;
-
-    CommentStr:= '';
-    CodeXYPos:= nil;
-    AddComment;
-
-  finally
-    FreeListOfPCodeXYPosition( ListOfPCodeXYPosition );
-  end;
-end;
-}
 function CreateNode( Parent: TJsonNode; Name: String; Value: String ): TJsonNode; alias : 'CreateStringNode';
 begin
   if ( Parent.Kind = nkArray ) then
@@ -584,7 +581,7 @@ begin
 
   try
     WriteLn( OutFile + '.unit.json' );
-    WriteLn( 'Uses: ' + UnitJSON.Child( 'Uses' ).AsJson );
+    //WriteLn( 'Uses: ' + UnitJSON.Child( 'Uses' ).AsJson );
     F:= TFileStream.Create( OutFile + '.unit.json', fmCreate );
     s:= PrettyPrint( UnitJSON.AsJson );
     F.Write( s[ 1 ], Length( s ));
@@ -955,6 +952,7 @@ end;
 procedure MakeDotFile( OutFile: String );
 var
   UnitJSON: TJsonNode;
+  DotDep: String = LineEnding;
 
   function ParseTypeDep( AType1: String; ADep: TJsonNode ): String;
   var
@@ -963,25 +961,37 @@ var
   begin
     Result:= '';
     for TypeJSON in ADep do begin
-      AType2:= TypeJSON.Child( 'Name' ).AsString;
-      Result+= AType1 + ' -> ' + AType2 + LineEnding;
+      AType2:= TypeJSON.Child( 'SourceFile' ).AsString + '/' + TypeJSON.Child( 'Context' ).AsString;
+      Result+= '  "' + AType1 + '" -> "' + AType2 + '"' + LineEnding;
     end;
   end;
 
-  function ParseTypes: String;
+  function ParseTypes( JSON: TJsonNode ): String;
   var
-    TypeJSON, NewJSON, Dep: TJsonNode;
+    TypeJSON, NewJSON, Dep, Node: TJsonNode;
+    FullName: String;
+    SectionS: String;
   begin
     Result:= '';
-    for TypeJSON in UnitJSON.Child( 'Types' ) do begin
+    for TypeJSON in JSON.Child( 'Types' ) do begin
       NewJSON:= TJsonNode.Create;
       NewJSON.Add( 'Name', TypeJSON.Name );
+      FullName:= JSON.Child( 'Name' ).AsString + '/' + WalkJSON( TypeJSON );
+      NewJSON.Add( 'FullName', FullName );
       //NewJSON.Add( 'content', ParseTypes );
       Result+= ReplaceByObj( DotClass, NewJSON );
       Dep:= TypeJSON.Child( 'TypeDep' );
       if ( Assigned( Dep )) then
-        Result+= ParseTypeDep( TypeJSON.Name, Dep );
+        DotDep += ParseTypeDep( FullName, Dep );
       NewJSON.Free;
+
+      Node:= TypeJSON.Child( 'NodeType' );
+      if ( Assigned( Node ) and ( Node.AsString = 'class' )) then
+        for SectionS in [ 'protected', 'private', 'public', 'published' ] do begin
+          Node:= TypeJSON.Child( SectionS );
+          if ( Assigned( Node )) then
+            ParseTypes( Node );
+        end;
     end;
   end;
 
@@ -991,16 +1001,24 @@ var
   F: TStringList;
 
 begin
+  {UnitJSON:= UnitUnknown;
+  NewJSON:= TJsonNode.Create;
+  NewJSON.Add( 'CleanName', ReplaceStr( UnitJSON.Child( 'Name' ).AsString, '.', '_' ));
+  NewJSON.Add( 'Name', UnitJSON.Child( 'Name' ).AsString );
+  NewJSON.Add( 'content', ParseTypes );
+  DotFile+= ReplaceByObj( DotUnit, NewJSON );
+  NewJSON.Free;}
+
   for UnitJSON in UnitDict.Values do begin
     NewJSON:= TJsonNode.Create;
     NewJSON.Add( 'CleanName', ReplaceStr( UnitJSON.Child( 'Name' ).AsString, '.', '_' ));
     NewJSON.Add( 'Name', UnitJSON.Child( 'Name' ).AsString );
-    NewJSON.Add( 'content', ParseTypes );
+    NewJSON.Add( 'content', ParseTypes( UnitJSON ));
     DotFile+= ReplaceByObj( DotUnit, NewJSON );
     NewJSON.Free;
   end;
   F:= TStringList.Create;
-  F.Text:= ReplaceStr( DotGraph, '$content$', DotFile );
+  F.Text:= ReplaceStr( DotGraph, '$content$', DotFile + DotDep );
   F.SaveToFile( OutFile );
   F.Free;
 end;
