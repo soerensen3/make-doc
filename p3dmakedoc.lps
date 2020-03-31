@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="59">
+    <Units Count="85">
       <Unit0>
         <Filename Value="p3dmakedoc.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="102"/>
-        <CursorPos Y="121"/>
+        <TopLine Value="87"/>
+        <CursorPos X="55" Y="105"/>
         <UsageCount Value="209"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -17,8 +17,8 @@
         <Filename Value="p3dparsepascal.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="103"/>
-        <CursorPos X="36" Y="118"/>
+        <TopLine Value="633"/>
+        <CursorPos X="39" Y="866"/>
         <UsageCount Value="209"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -26,8 +26,8 @@
         <Filename Value="p3dparsedoc.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="49"/>
-        <CursorPos X="27" Y="67"/>
+        <TopLine Value="173"/>
+        <CursorPos X="35" Y="202"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -35,8 +35,8 @@
         <Filename Value="p3dparsepascal.inc"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="201"/>
-        <CursorPos X="95" Y="239"/>
+        <TopLine Value="155"/>
+        <CursorPos X="78" Y="178"/>
         <UsageCount Value="326"/>
         <Loaded Value="True"/>
       </Unit3>
@@ -44,7 +44,7 @@
         <Filename Value="JsonTools/jsontools.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="JsonTools"/>
-        <TopLine Value="965"/>
+        <TopLine Value="971"/>
         <CursorPos Y="985"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
@@ -53,28 +53,28 @@
         <Filename Value="p3dgendep.pas"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="12"/>
-        <UsageCount Value="187"/>
+        <UsageCount Value="183"/>
       </Unit5>
       <Unit6>
         <Filename Value="../../codetoolstest/parsepascal.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="133"/>
         <CursorPos Y="144"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="5"/>
       </Unit6>
       <Unit7>
         <Filename Value="../../codetoolstest/highlighthtml.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="351"/>
         <CursorPos X="60" Y="370"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="5"/>
       </Unit7>
       <Unit8>
         <Filename Value="../../codetoolstest/makedoc.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="44"/>
         <CursorPos X="44" Y="53"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="5"/>
       </Unit8>
       <Unit9>
         <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/pascalreadertool.pas"/>
@@ -82,7 +82,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="113"/>
         <CursorPos X="14" Y="147"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="39"/>
       </Unit9>
       <Unit10>
         <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/codetree.pas"/>
@@ -90,7 +90,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="117"/>
         <CursorPos X="3" Y="135"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="59"/>
       </Unit10>
       <Unit11>
         <Filename Value="/usr/share/lazarus/1.6.4/components/codetools/customcodetool.pas"/>
@@ -98,57 +98,53 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2712"/>
         <CursorPos X="85" Y="2717"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="59"/>
       </Unit11>
       <Unit12>
         <Filename Value="p3dparsepascal (old).pas"/>
-        <EditorIndex Value="29"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="92"/>
         <CursorPos X="21" Y="127"/>
-        <UsageCount Value="117"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="113"/>
       </Unit12>
       <Unit13>
         <Filename Value="p3dparsedoc (old).pas"/>
-        <EditorIndex Value="28"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="628"/>
         <CursorPos X="42" Y="648"/>
-        <UsageCount Value="100"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="96"/>
       </Unit13>
       <Unit14>
         <Filename Value="../pascal3d/src/pascal3d.core.pas"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="112"/>
         <CursorPos X="3" Y="17"/>
-        <UsageCount Value="58"/>
+        <UsageCount Value="54"/>
       </Unit14>
       <Unit15>
         <Filename Value="../pascal3d/src/pascal3d.core/p3dshadernodes_markdown.inc"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="29" Y="22"/>
-        <UsageCount Value="58"/>
+        <UsageCount Value="54"/>
       </Unit15>
       <Unit16>
         <Filename Value="../markdown/pascal3d.markdown.pas"/>
-        <EditorIndex Value="30"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="17"/>
         <CursorPos X="73" Y="17"/>
-        <UsageCount Value="115"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="111"/>
       </Unit16>
       <Unit17>
         <Filename Value="../math3d/p3dmath.pas"/>
         <UnitName Value="p3dMath"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="7" Y="23"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="10"/>
       </Unit17>
       <Unit18>
         <Filename Value="../pascal3d/src/p3d.utils_lib.inc"/>
-        <EditorIndex Value="18"/>
-        <UsageCount Value="102"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="98"/>
       </Unit18>
       <Unit19>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/examples/findusedunitreferences.lpr"/>
@@ -156,7 +152,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="51"/>
         <CursorPos X="16" Y="62"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="106"/>
       </Unit19>
       <Unit20>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codetoolmanager.pas"/>
@@ -164,7 +160,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="36"/>
         <CursorPos X="3" Y="59"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="106"/>
       </Unit20>
       <Unit21>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codecache.pas"/>
@@ -172,16 +168,15 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="210"/>
         <CursorPos X="22" Y="234"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="106"/>
       </Unit21>
       <Unit22>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/pascalreadertool.pas"/>
         <UnitName Value="PascalReaderTool"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="111"/>
         <CursorPos X="14" Y="128"/>
-        <UsageCount Value="115"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="111"/>
       </Unit22>
       <Unit23>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/basiccodetools.pas"/>
@@ -189,7 +184,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="87"/>
         <CursorPos X="10" Y="110"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="106"/>
       </Unit23>
       <Unit24>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/finddeclarationtool.pas"/>
@@ -197,7 +192,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="882"/>
         <CursorPos X="14" Y="903"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="106"/>
       </Unit24>
       <Unit25>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/customcodetool.pas"/>
@@ -205,7 +200,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="2475"/>
         <CursorPos X="33" Y="2486"/>
-        <UsageCount Value="94"/>
+        <UsageCount Value="90"/>
       </Unit25>
       <Unit26>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codetoolsconfig.pas"/>
@@ -213,14 +208,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="105"/>
         <CursorPos X="15" Y="127"/>
-        <UsageCount Value="94"/>
+        <UsageCount Value="90"/>
       </Unit26>
       <Unit27>
         <Filename Value="../../../../fpcupdeluxe/fpcsrc/rtl/objpas/sysutils/sysutilh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="4" Y="107"/>
-        <UsageCount Value="92"/>
+        <UsageCount Value="88"/>
       </Unit27>
       <Unit28>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/definetemplates.pas"/>
@@ -228,7 +223,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="9864"/>
         <CursorPos Y="9896"/>
-        <UsageCount Value="92"/>
+        <UsageCount Value="88"/>
       </Unit28>
       <Unit29>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codetree.pas"/>
@@ -236,69 +231,60 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="102"/>
         <CursorPos X="3" Y="126"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="85"/>
       </Unit29>
       <Unit30>
         <Filename Value="../pascal3d/src/pascal3d.base/p3d.core.scene.inc"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="45" Y="24"/>
-        <UsageCount Value="103"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="99"/>
       </Unit30>
       <Unit31>
         <Filename Value="../pascal3d/src/p3d.utils.pas"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="16"/>
         <CursorPos X="46" Y="34"/>
-        <UsageCount Value="102"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="98"/>
       </Unit31>
       <Unit32>
         <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.generics.inc"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="16" Y="7"/>
-        <UsageCount Value="102"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="98"/>
       </Unit32>
       <Unit33>
         <Filename Value="../pascal3d/src/p3d.events.pas"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="21" Y="28"/>
-        <UsageCount Value="102"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="98"/>
       </Unit33>
       <Unit34>
         <Filename Value="../pascal3d/src/pascal3d.events/p3d.events.logger.inc"/>
-        <EditorIndex Value="14"/>
-        <UsageCount Value="102"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="98"/>
       </Unit34>
       <Unit35>
         <Filename Value="../pascal3d/src/pascal3d.core/p3d.core.arrays.inc"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos Y="27"/>
-        <UsageCount Value="101"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="97"/>
       </Unit35>
       <Unit36>
         <Filename Value="../pascal3d/src/p3d.core_lib.inc"/>
-        <EditorIndex Value="10"/>
-        <UsageCount Value="101"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="97"/>
       </Unit36>
       <Unit37>
         <Filename Value="../pascal3d/src/pascal3d.core/p3d.core.buffers.inc"/>
-        <EditorIndex Value="9"/>
-        <UsageCount Value="101"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="97"/>
       </Unit37>
       <Unit38>
         <Filename Value="../pascal3d/src/p3d.core.pas"/>
-        <EditorIndex Value="7"/>
-        <UsageCount Value="101"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="97"/>
       </Unit38>
       <Unit39>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/pascalparsertool.pas"/>
@@ -306,265 +292,447 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3758"/>
         <CursorPos Y="3777"/>
-        <UsageCount Value="66"/>
+        <UsageCount Value="62"/>
       </Unit39>
       <Unit40>
         <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.propaccess.inc"/>
-        <EditorIndex Value="20"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="312"/>
         <CursorPos Y="317"/>
-        <UsageCount Value="104"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="100"/>
       </Unit40>
       <Unit41>
-        <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/keywordfunclists.pas"/>
-        <UnitName Value="KeywordFuncLists"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="614"/>
-        <CursorPos Y="633"/>
-        <UsageCount Value="1"/>
-      </Unit41>
-      <Unit42>
         <Filename Value="../../../../fpcupdeluxe/fpcsrc/packages/rtl-generics/src/inc/generics.dictionariesh.inc"/>
-        <EditorIndex Value="27"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="598"/>
         <CursorPos X="49" Y="617"/>
-        <UsageCount Value="31"/>
-        <Loaded Value="True"/>
-      </Unit42>
-      <Unit43>
+        <UsageCount Value="27"/>
+      </Unit41>
+      <Unit42>
         <Filename Value="../../../../fpcupdeluxe/fpcsrc/packages/rtl-generics/src/inc/generics.dictionaries.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="349"/>
         <CursorPos X="56" Y="355"/>
-        <UsageCount Value="0"/>
-      </Unit43>
-      <Unit44>
+        <UsageCount Value="6"/>
+      </Unit42>
+      <Unit43>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/codecompletiontool.pas"/>
         <UnitName Value="CodeCompletionTool"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="418"/>
         <CursorPos X="23" Y="158"/>
-        <UsageCount Value="0"/>
-      </Unit44>
-      <Unit45>
+        <UsageCount Value="6"/>
+      </Unit43>
+      <Unit44>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/codetools/stdcodetools.pas"/>
         <UnitName Value="StdCodeTools"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="125"/>
         <CursorPos X="14" Y="142"/>
-        <UsageCount Value="0"/>
-      </Unit45>
-      <Unit46>
+        <UsageCount Value="6"/>
+      </Unit44>
+      <Unit45>
         <Filename Value="../../../../fpcupdeluxe/lazarus/components/lazutils/lazfileutils.pas"/>
         <UnitName Value="LazFileUtils"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="25" Y="43"/>
-        <UsageCount Value="0"/>
-      </Unit46>
-      <Unit47>
+        <UsageCount Value="6"/>
+      </Unit45>
+      <Unit46>
         <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/objpas/sysutils/syshelph.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="137"/>
         <CursorPos X="14" Y="149"/>
-        <UsageCount Value="5"/>
-      </Unit47>
-      <Unit48>
+        <UsageCount Value="1"/>
+      </Unit46>
+      <Unit47>
         <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/objpas/sysutils/syshelp.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1064"/>
         <CursorPos X="3" Y="1066"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="1"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="../pascal3d/src/p3d.base.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="24" Y="13"/>
+        <UsageCount Value="14"/>
       </Unit48>
       <Unit49>
-        <Filename Value="../pascal3d/src/p3d.base.pas"/>
-        <EditorIndex Value="6"/>
-        <CursorPos X="24" Y="29"/>
-        <UsageCount Value="14"/>
-        <Loaded Value="True"/>
-      </Unit49>
-      <Unit50>
         <Filename Value="../pascal3d/src/pascal3d.core/p3d.core.rendertarget.inc"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="29"/>
         <CursorPos X="41" Y="50"/>
         <UsageCount Value="14"/>
-        <Loaded Value="True"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="../streamable/p3d.streamable.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="7"/>
       </Unit50>
       <Unit51>
-        <Filename Value="../streamable/p3d.streamable.pas"/>
-        <EditorIndex Value="23"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <Filename Value="../streamable/p3d.streamable.properties.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="70" Y="148"/>
+        <UsageCount Value="7"/>
       </Unit51>
       <Unit52>
-        <Filename Value="../streamable/p3d.streamable.properties.pas"/>
-        <EditorIndex Value="26"/>
-        <CursorPos X="70" Y="148"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <Filename Value="../streamable/p3d.streamable.interfaces.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="32" Y="16"/>
+        <UsageCount Value="7"/>
       </Unit52>
       <Unit53>
-        <Filename Value="../streamable/p3d.streamable.interfaces.pas"/>
-        <EditorIndex Value="25"/>
-        <CursorPos X="32" Y="16"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <Filename Value="../streamable/p3d.classfactory.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="7"/>
       </Unit53>
       <Unit54>
-        <Filename Value="../streamable/p3d.classfactory.pas"/>
-        <EditorIndex Value="22"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit54>
-      <Unit55>
         <Filename Value="../streamable/p3d.streamable.base.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="24"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="96"/>
         <CursorPos X="35" Y="115"/>
+        <UsageCount Value="7"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.interfaces.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="48" Y="12"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit55>
       <Unit56>
-        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.interfaces.inc"/>
-        <EditorIndex Value="17"/>
+        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.propaccess_basetypes.inc"/>
+        <EditorIndex Value="-1"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit56>
       <Unit57>
-        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.propaccess_basetypes.inc"/>
-        <EditorIndex Value="19"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit57>
-      <Unit58>
         <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.propaccess_jsonroot.inc"/>
-        <EditorIndex Value="21"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="34" Y="15"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+      </Unit57>
+      <Unit58>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/rtl/inc/objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="133"/>
+        <CursorPos X="8" Y="134"/>
+        <UsageCount Value="10"/>
       </Unit58>
+      <Unit59>
+        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.resources.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="52"/>
+        <CursorPos X="44" Y="66"/>
+        <UsageCount Value="6"/>
+      </Unit59>
+      <Unit60>
+        <Filename Value="../p3d-streamable/p3d.streamable.containers.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="22" Y="14"/>
+        <UsageCount Value="8"/>
+      </Unit60>
+      <Unit61>
+        <Filename Value="../p3d-streamable/p3d.streamable.properties.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2"/>
+        <CursorPos X="3" Y="15"/>
+        <UsageCount Value="7"/>
+      </Unit61>
+      <Unit62>
+        <Filename Value="../p3d-utils/p3d.files.json.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="17" Y="19"/>
+        <UsageCount Value="7"/>
+      </Unit62>
+      <Unit63>
+        <Filename Value="../../../../../fpcupdeluxe/lazarus/components/codetools/customcodetool.pas"/>
+        <UnitName Value="CustomCodeTool"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="2477"/>
+        <CursorPos Y="2494"/>
+        <UsageCount Value="33"/>
+        <Loaded Value="True"/>
+      </Unit63>
+      <Unit64>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.lists.pas"/>
+        <EditorIndex Value="15"/>
+        <CursorPos X="77" Y="185"/>
+        <UsageCount Value="32"/>
+        <Loaded Value="True"/>
+      </Unit64>
+      <Unit65>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.storage.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="12"/>
+        <CursorPos X="64" Y="39"/>
+        <UsageCount Value="8"/>
+      </Unit65>
+      <Unit66>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.lib.inc"/>
+        <EditorIndex Value="14"/>
+        <CursorPos X="3" Y="2"/>
+        <UsageCount Value="32"/>
+        <Loaded Value="True"/>
+      </Unit66>
+      <Unit67>
+        <Filename Value="../p3d-streamable/p3d.streamable.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="7"/>
+        <CursorPos X="34" Y="35"/>
+        <UsageCount Value="8"/>
+      </Unit67>
+      <Unit68>
+        <Filename Value="../p3d-streamable/p3d.interfaces.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="8"/>
+      </Unit68>
+      <Unit69>
+        <Filename Value="../p3d-streamable/p3d.properties.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="8"/>
+      </Unit69>
+      <Unit70>
+        <Filename Value="../../../../../fpcupdeluxe/fpcsrc/packages/fcl-xml/src/dom.pp"/>
+        <UnitName Value="DOM"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="225"/>
+        <CursorPos X="14" Y="240"/>
+        <UsageCount Value="8"/>
+      </Unit70>
+      <Unit71>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.base.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="138"/>
+        <CursorPos X="44" Y="119"/>
+        <UsageCount Value="32"/>
+        <Loaded Value="True"/>
+      </Unit71>
+      <Unit72>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propertymap.pas"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="18"/>
+        <CursorPos X="32" Y="95"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit72>
+      <Unit73>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.basetypes.pas"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="84"/>
+        <CursorPos X="113" Y="33"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit73>
+      <Unit74>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.lib.inc"/>
+        <EditorIndex Value="8"/>
+        <CursorPos X="3" Y="5"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit74>
+      <Unit75>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="87"/>
+        <CursorPos X="50" Y="99"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit75>
+      <Unit76>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.lists.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="47"/>
+        <CursorPos X="74" Y="61"/>
+        <UsageCount Value="7"/>
+      </Unit76>
+      <Unit77>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccessarray.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="28"/>
+        <CursorPos X="35" Y="8"/>
+        <UsageCount Value="7"/>
+      </Unit77>
+      <Unit78>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="53"/>
+        <CursorPos X="34" Y="80"/>
+        <UsageCount Value="32"/>
+        <Loaded Value="True"/>
+      </Unit78>
+      <Unit79>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.jsonroot.pas"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="54"/>
+        <CursorPos X="22" Y="58"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit79>
+      <Unit80>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.named.pas"/>
+        <UnitName Value="p3d.streamable.base"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="26" Y="6"/>
+        <UsageCount Value="6"/>
+      </Unit80>
+      <Unit81>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.containers.pas"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="81"/>
+        <CursorPos X="64" Y="99"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+      </Unit81>
+      <Unit82>
+        <Filename Value="../p3d-utils/p3d.files/p3d.files.json.pas"/>
+        <EditorIndex Value="16"/>
+        <TopLine Value="7"/>
+        <CursorPos X="20" Y="31"/>
+        <UsageCount Value="30"/>
+        <Loaded Value="True"/>
+      </Unit82>
+      <Unit83>
+        <Filename Value="../../kzdesktop/kzlazdesktop.pas"/>
+        <ComponentName Value="KZLazDesktopInterface"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="KZLazDesktop"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="261"/>
+        <CursorPos X="50" Y="275"/>
+        <UsageCount Value="7"/>
+      </Unit83>
+      <Unit84>
+        <Filename Value="../../kzdesktop/kzdesktop.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="83"/>
+        <CursorPos X="41" Y="92"/>
+        <UsageCount Value="7"/>
+      </Unit84>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="1002" Column="33" TopLine="982"/>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.containers.pas"/>
+        <Caret Line="39" Column="108" TopLine="15"/>
       </Position1>
       <Position2>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="168" Column="12" TopLine="138"/>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.containers.pas"/>
+        <Caret Line="99" Column="64" TopLine="81"/>
       </Position2>
       <Position3>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="374" Column="39" TopLine="350"/>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.base.pas"/>
+        <Caret Line="100" Column="36" TopLine="81"/>
       </Position3>
       <Position4>
-        <Filename Value="../pascal3d/src/p3d.base.pas"/>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.base.pas"/>
+        <Caret Line="358" Column="3" TopLine="329"/>
       </Position4>
       <Position5>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="657" Column="34" TopLine="629"/>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.base.pas"/>
+        <Caret Line="121" Column="33" TopLine="171"/>
       </Position5>
       <Position6>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="309" Column="47" TopLine="297"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="69" Column="39" TopLine="47"/>
       </Position6>
       <Position7>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="90" Column="34" TopLine="275"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="452" Column="32" TopLine="427"/>
       </Position7>
       <Position8>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="164" Column="14" TopLine="137"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="59" Column="17" TopLine="51"/>
       </Position8>
       <Position9>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="118" Column="17" TopLine="99"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="403" Column="3" TopLine="401"/>
       </Position9>
       <Position10>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="78" Column="37" TopLine="58"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="59" Column="17" TopLine="40"/>
       </Position10>
       <Position11>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="160" Column="31" TopLine="137"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="403" Column="3" TopLine="401"/>
       </Position11>
       <Position12>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="159" TopLine="137"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="71" Column="17" TopLine="41"/>
       </Position12>
       <Position13>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="163" TopLine="143"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="434" Column="3" TopLine="420"/>
       </Position13>
       <Position14>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="164" TopLine="143"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="71" Column="59" TopLine="50"/>
       </Position14>
       <Position15>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="189" TopLine="152"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="458" Column="3" TopLine="455"/>
       </Position15>
       <Position16>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="197" TopLine="177"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="69" Column="55" TopLine="52"/>
       </Position16>
       <Position17>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="159" Column="29" TopLine="140"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="452" Column="5" TopLine="434"/>
       </Position17>
       <Position18>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="163" TopLine="140"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="59" Column="17" TopLine="40"/>
       </Position18>
       <Position19>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="150" Column="31" TopLine="140"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="403" Column="3" TopLine="401"/>
       </Position19>
       <Position20>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="424" Column="46" TopLine="413"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="59" Column="17" TopLine="40"/>
       </Position20>
       <Position21>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="318" Column="53" TopLine="262"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="403" Column="3" TopLine="401"/>
       </Position21>
       <Position22>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="163" Column="23" TopLine="143"/>
+        <Filename Value="../p3d-utils/p3d.files/p3d.files.json.pas"/>
+        <Caret Line="32" Column="17"/>
       </Position22>
       <Position23>
-        <Filename Value="p3dparsepascal.pas"/>
-        <Caret Line="340" Column="44" TopLine="323"/>
+        <Filename Value="../p3d-utils/p3d.files/p3d.files.json.pas"/>
+        <Caret Line="65" Column="3" TopLine="63"/>
       </Position23>
       <Position24>
-        <Filename Value="../streamable/p3d.streamable.base.pas"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="70" Column="34" TopLine="46"/>
       </Position24>
       <Position25>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="157" Column="8" TopLine="143"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="450" Column="3" TopLine="448"/>
       </Position25>
       <Position26>
-        <Filename Value="p3dparsepascal.inc"/>
-        <Caret Line="339" Column="19" TopLine="321"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="70" Column="17" TopLine="51"/>
       </Position26>
       <Position27>
-        <Filename Value="../streamable/p3d.streamable.base.pas"/>
-        <Caret Line="26" Column="38"/>
+        <Filename Value="../p3d-streamable/p3d.streamable/p3d.streamable.lib.inc"/>
+        <Caret Line="2" Column="3"/>
       </Position27>
       <Position28>
-        <Filename Value="../streamable/p3d.streamable.base.pas"/>
-        <Caret Line="19" Column="3"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="206" Column="28" TopLine="187"/>
       </Position28>
       <Position29>
-        <Filename Value="../streamable/p3d.streamable.base.pas"/>
-        <Caret Line="14" Column="14"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.propaccess.pas"/>
+        <Caret Line="99" Column="50" TopLine="87"/>
       </Position29>
       <Position30>
-        <Filename Value="../pascal3d/src/pascal3d.utils/p3d.utils.propaccess_jsonroot.inc"/>
-        <Caret Line="15" Column="34"/>
+        <Filename Value="../p3d-streamable/p3d.properties/p3d.properties.jsonroot.pas"/>
+        <Caret Line="83" Column="85" TopLine="53"/>
       </Position30>
     </JumpHistory>
     <RunParams>
@@ -572,32 +740,32 @@
       <Modes ActiveMode="default"/>
     </RunParams>
     <HistoryLists Count="3">
-      <List0 Name="LaunchingApplication" Type="File" Count="4">
-        <Item2 Value="/usr/bin/xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
-        <Item3 Value="/usr/bin/gnome-terminal -t &apos;Lazarus Run Output&apos; -e &apos;$(LazarusDir)/tools/runwait.sh $(TargetCmdLine)&apos;"/>
-        <Item4 Value="/usr/bin/konsole -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+      <List0 Name="LaunchingApplication" Type="File" Count="3">
+        <Item1 Value="/usr/bin/xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+        <Item2 Value="/usr/bin/gnome-terminal -t &apos;Lazarus Run Output&apos; -e &apos;$(LazarusDir)/tools/runwait.sh $(TargetCmdLine)&apos;"/>
+        <Item3 Value="/usr/bin/konsole -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
       </List0>
       <List1 Name="CommandLineParameters" Count="20">
-        <Item1 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/external/libsdl2/libsdl2.lpk /home/johannes/Documents/custom/p3d/pascal3d/external/generics.collections/laz_generics_collections.lpk /home/johannes/Documents/custom/p3d/pascal3d/external/dglopengl/pl_opengl.lpk /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk  -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
-        <Item2 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
-        <Item3 Value="parse ../streamable/pascal3d_streamable.lpk -o outdir/"/>
-        <Item4 Value="parse tests/test2generic.lpr -o tests/out/"/>
-        <Item5 Value="parse ../pascal3d/src/pascal3d.lpk -o outdir/"/>
-        <Item6 Value="/home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item7 Value="parse tests/test1class.lpr -o tests/out/"/>
-        <Item8 Value="parse p3dmakedoc.lpi -o tests/out/"/>
-        <Item9 Value="parse /home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
-        <Item10 Value="parse /home/johannes/Documents/custom/p3d/pascal3d_math/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item11 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d_ui.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item12 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item13 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item14 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir se /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
-        <Item15 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item16 Value="/home/johannes/Documents/custom/p3d/generics/pascal3d_generics.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item17 Value="/home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item18 Value="/home/johannes/Documents/custom/p3d/pascal3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
-        <Item19 Value="/home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
-        <Item20 Value="/home/johannes/Documents/dev/Lazarus/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/dev/Lazarus/p3d/makedoc/outdir/ /home/johannes/Documents/dev/Lazarus/p3d/makedoc/outdir/"/>
+        <Item1 Value="parse ../p3d-streamable/pascal3d_streamable.lpk  -o outdir/"/>
+        <Item2 Value="parse ../p3d-utils/pascal3d_utils.lpk -o outdir/"/>
+        <Item3 Value="parse ../p3d-utils/pascal3d_utils.lpk ../p3d-streamable/pascal3d_streamable.lpk  -o outdir/"/>
+        <Item4 Value="parse ../p3d-utils/pascal3d_utils.lpk  -o outdir/"/>
+        <Item5 Value="parse ../pascal3d/src/pascal3d.lpk  -o outdir/"/>
+        <Item6 Value="parse ../pascal3d/src/p3d.utils.pas  -o outdir/"/>
+        <Item7 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/external/libsdl2/libsdl2.lpk /home/johannes/Documents/custom/p3d/pascal3d/external/generics.collections/laz_generics_collections.lpk /home/johannes/Documents/custom/p3d/pascal3d/external/dglopengl/pl_opengl.lpk /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk  -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+        <Item8 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+        <Item9 Value="parse ../streamable/pascal3d_streamable.lpk -o outdir/"/>
+        <Item10 Value="parse tests/test2generic.lpr -o tests/out/"/>
+        <Item11 Value="parse ../pascal3d/src/pascal3d.lpk -o outdir/"/>
+        <Item12 Value="/home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ /home/johannes/Documents/custom/p3d/makedoc/outdir"/>
+        <Item13 Value="parse tests/test1class.lpr -o tests/out/"/>
+        <Item14 Value="parse p3dmakedoc.lpi -o tests/out/"/>
+        <Item15 Value="parse /home/johannes/Documents/custom/p3d/math3d/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/"/>
+        <Item16 Value="parse /home/johannes/Documents/custom/p3d/pascal3d_math/pascal3d_math.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item17 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d_ui.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item18 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item19 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
+        <Item20 Value="parse /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/ gendoc /home/johannes/Documents/custom/p3d/makedoc/outdir se /home/johannes/Documents/custom/p3d/pascal3d/src/pascal3d.lpk -o /home/johannes/Documents/custom/p3d/makedoc/outdir/html/"/>
       </List1>
       <List2 Name="WorkingDirectory" Type="File" Count="1"/>
     </HistoryLists>

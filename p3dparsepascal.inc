@@ -66,7 +66,7 @@
     function ParseUnits( Name: String ): TNode;
     var
       Units: TJsonNode;
-      thisUnit: TJsonNode;
+      thisUnit, types: TJsonNode;
       i: Integer;
       DebugS: String;
     begin
@@ -76,11 +76,14 @@
         for i:= Units.Count - 1 downto 0 do begin
           DebugS:= 'Trying ' + Units.Child( i ).AsString + '  looking for: ' + Name;
           if ( UnitDict.TryGetValue( Units.Child( i ).AsString, thisUnit )) then begin
-            Result:= thisUnit.Child( 'Types' ).Child( Name );
-            if ( Assigned( Result )) then begin
-              UnitContext:= Units.Child( i ).AsString;
-              WriteLn( DebugS );
-              break;
+            types:= thisUnit.Child( 'Types' );
+            if ( Assigned( types )) then begin
+              Result:= types.Child( Name );
+              if ( Assigned( Result )) then begin
+                UnitContext:= Units.Child( i ).AsString;
+                WriteLn( DebugS );
+                break;
+              end;
             end;
           end;
         end;

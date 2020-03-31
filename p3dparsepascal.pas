@@ -764,14 +764,15 @@ begin
 end;
 
 procedure ParsePascalPackage( FileName: String; OutFile: String );
-  function LoadUnitFromDom( Dom: TDOMNode ): String;
+  function LoadUnitFromDom( Dom: TDOMNode; out Name: String ): Boolean;
   var
     fn: TDOMNode;
     UnitFn: TDOMNode;
     UnitFnStr: String;
     unitIdent: DOMString;
   begin
-    Result:= '';
+    Name:= '';
+    Result:= False;
     fn:= Dom.FindNode( 'Filename' );
     if ( not Assigned( fn )) then
       exit;
@@ -779,10 +780,16 @@ procedure ParsePascalPackage( FileName: String; OutFile: String );
     if ( not Assigned( UnitFn )) then
       exit;
     UnitFnStr:= ExtractFilePath( FileName ) + UnitFn.TextContent;
+    if ( Assigned( Dom.FindNode( 'Type' ))) then begin
+      if ( not ( TDOMElement( Dom.FindNode( 'Type' )).GetAttribute( 'Value' ) = 'Unit' )) then
+        exit;
+    end;
+
     if ( Assigned( Dom.FindNode( 'UnitName' ))) then begin // Pascal units have unitname tag, others don't
       unitIdent:= TDOMElement( Dom.FindNode( 'UnitName' )).GetAttribute( 'Value' );
       TryParsePascalUnit( UnitFnStr, ExtractFilePath( OutFile ) + unitIdent );
-      Result:= unitIdent;
+      Name:= unitIdent;
+      Result:= True;
     end;
   end;
 
@@ -900,7 +907,9 @@ begin
 
         Units:= CreateNode( PackageJSON, 'Units' ).AsArray;
         for i:= 0 to node.ChildNodes.Count - 1 do begin
-          unitnm:= LoadUnitFromDom( node.ChildNodes[ i ]);
+          node.ChildNodes[ i ].HasChildNodes;
+          if ( not LoadUnitFromDom( node.ChildNodes[ i ], unitnm )) then
+            Continue;
           if ( unitnm > '' ) then
             CreateNode( Units, '', unitnm );
         end;
@@ -961,6 +970,8 @@ var
   begin
     Result:= '';
     for TypeJSON in ADep do begin
+      if ( TypeJSON.Child( 'SourceFile' ).AsString = 'Unknown' ) then //QUICK AND DIRTY
+        Continue;
       AType2:= TypeJSON.Child( 'SourceFile' ).AsString + '/' + TypeJSON.Child( 'Context' ).AsString;
       Result+= '  "' + AType1 + '" -> "' + AType2 + '"' + LineEnding;
     end;
@@ -968,31 +979,33 @@ var
 
   function ParseTypes( JSON: TJsonNode ): String;
   var
-    TypeJSON, NewJSON, Dep, Node: TJsonNode;
+    TypeJSON, NewJSON, Dep, Node, Types: TJsonNode;
     FullName: String;
     SectionS: String;
   begin
     Result:= '';
-    for TypeJSON in JSON.Child( 'Types' ) do begin
-      NewJSON:= TJsonNode.Create;
-      NewJSON.Add( 'Name', TypeJSON.Name );
-      FullName:= JSON.Child( 'Name' ).AsString + '/' + WalkJSON( TypeJSON );
-      NewJSON.Add( 'FullName', FullName );
-      //NewJSON.Add( 'content', ParseTypes );
-      Result+= ReplaceByObj( DotClass, NewJSON );
-      Dep:= TypeJSON.Child( 'TypeDep' );
-      if ( Assigned( Dep )) then
-        DotDep += ParseTypeDep( FullName, Dep );
-      NewJSON.Free;
+    Types:= JSON.Child( 'Types' );
+    if ( Assigned( Types )) then
+      for TypeJSON in Types do begin
+        NewJSON:= TJsonNode.Create;
+        NewJSON.Add( 'Name', TypeJSON.Name );
+        FullName:= JSON.Child( 'Name' ).AsString + '/' + WalkJSON( TypeJSON );
+        NewJSON.Add( 'FullName', FullName );
+        //NewJSON.Add( 'content', ParseTypes );
+        Result+= ReplaceByObj( DotClass, NewJSON );
+        Dep:= TypeJSON.Child( 'TypeDep' );
+        if ( Assigned( Dep )) then
+          DotDep += ParseTypeDep( FullName, Dep );
+        NewJSON.Free;
 
-      Node:= TypeJSON.Child( 'NodeType' );
-      if ( Assigned( Node ) and ( Node.AsString = 'class' )) then
-        for SectionS in [ 'protected', 'private', 'public', 'published' ] do begin
-          Node:= TypeJSON.Child( SectionS );
-          if ( Assigned( Node )) then
-            ParseTypes( Node );
-        end;
-    end;
+        Node:= TypeJSON.Child( 'NodeType' );
+        if ( Assigned( Node ) and ( Node.AsString = 'class' )) then
+          for SectionS in [ 'protected', 'private', 'public', 'published' ] do begin
+            Node:= TypeJSON.Child( SectionS );
+            if ( Assigned( Node )) then
+              ParseTypes( Node );
+          end;
+      end;
   end;
 
 var
